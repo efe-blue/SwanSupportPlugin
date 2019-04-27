@@ -1,0 +1,584 @@
+<templateSet group="wechatCode">
+    <template name="swan.startRecode" value="swan.startRecord({&#10;  success:res=&gt;{&#10;  &#10;  },&#10;  fail:res=&gt;{&#10;  &#10;  }&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.request" value="swan.request({&#10;    url:&quot;$offset$&quot;,&#10;    success:res=&gt;{&#10;        &#10;    }&#10;})" description="������������ HTTPS ������������������������������������������������5������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.uploadFile" value="swan.uploadFile({&#10;    url: '$offset$', &#10;    filePath: '',&#10;    name: '', &#10;    success:res=&gt;{ &#10;    &#10;    }&#10;})" description="������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.downloadFile" value="swan.downloadFile({&#10;  url: '$offset$', &#10;  success: res =&gt; {&#10;   &#10;  }&#10;});" description="���������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.connectSocket" value="swan.connectSocket({&#10;  url: '$offset$'&#10;});" description="������������ WebSocket ��������������������������������������������������� WebSocket ������������������������������������ WebSocket ��������������������������������������������������������� WebSocket ������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onSocketOpen" value="swan.onSocketOpen(res =&gt; {&#10;&#10;})" description="������WebSocket������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onSocketError" value="swan.onSocketError(res=&gt;{&#10; &#10;})" description="������WebSocket������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.sendSocketMessage" value="swan.sendSocketMessage({&#10;      data:'$offset$'&#10;})" description="������ WebSocket ������������������������������ swan.connectSocket��������� swan.onSocketOpen ���������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onSocketMessage" value="swan.onSocketMessage(res =&gt; {&#10;  &#10;})" description="������WebSocket���������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.closeSocket" value="swan.closeSocket();" description="������WebSocket���������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onSocketClose" value="swan.onSocketClose(res =&gt; {&#10;&#10;})" description="������WebSocket������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.chooseImage" value="swan.chooseImage({ &#10;  success: res =&gt; { &#10;  &#10;  }&#10;});" description="������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.previewImage" value="swan.previewImage({ &#10;  urls: [$offset$]&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getImageInfo" value=" swan.getImageInfo({&#10;      src:'$offset$'    &#10; });" description="������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.stopRecord" value=" swan.stopRecord()" description="��� ������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.playVoice" value=" swan.playVoice({&#10;      filePath: '$offset$'&#10; })" description="������������������������������������������������������������������������������������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.pauseVoice" value="swan.pauseVoice()" description="���������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.stopVoice" value="swan.stopVoice();" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getBackgroundAudioPlayerState" value="swan.getBackgroundAudioPlayerState({&#10;    success:res=&gt;{&#10;  &#10;    }&#10;});" description="������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.playBackgroundAudio" value="swan.playBackgroundAudio({&#10;    dataUrl:&quot;$offset$&quot;&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.pauseBackgroundAudio" value="swan.pauseBackgroundAudio()" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.seekBackgroundAudio" value="swan.seekBackgroundAudio({&#10;    position: 0&#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.stopBackgroundAudio" value="swan.stopBackgroundAudio();" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onBackgroundAudioPlay" value="swan.onBackgroundAudioPlay(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onBackgroundAudioPause" value="swan.onBackgroundAudioPause(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onBackgroundAudioStop" value="swan.onBackgroundAudioStop(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.saveFile" value="swan.saveFile({&#10;  tempFilePath: '$offset$',&#10;  success: res=&gt;{&#10;&#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getSavedFileList" value="swan.getSavedFileList({&#10;  success:res=&gt;{&#10;   &#10;  }&#10;});" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getSavedFileInfo" value="swan.getSavedFileInfo({&#10;  filePath: '$offset$', &#10;  success:res=&gt;{&#10;    &#10;  }&#10;});" description="���������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.removeSavedFile" value="swan.removeSavedFile({&#10;    filePath: '$offset$'&#10;})" description="���������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.createAudioContext" value="swan.createAudioContext(&quot;$offset$&quot;);" description="��������������� audio ��������� audioContext ������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.createVideoContext" value="swan.createVideoContext(&quot;$offset$&quot;);" description="��������������� video ��������� videoContext ������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.setStorage" value="swan.setStorage({&#10;  key:&quot;$offset$&quot;&#10;  data:&quot;&quot;&#10;});" description="������������������������������������������ key ��������������������������� key ���������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.setStorageSync" value="swan.setStorageSync('$offset$', '');" description="��� data ��������������������������������� key ��������������������������� key ������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getStorage" value="swan.getStorage({&#10;  key: '$offset$',&#10;  success: res =&gt; {&#10;   &#10;  } &#10;});" description="������������������������������������ key ���������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getStorageSync" value="swan.getStorageSync('$offset$');" description="������������������������������������ key ���������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getStorageInfo" value="swan.getStorageInfo({&#10;  success: res=&gt;{&#10;&#10;  }&#10;})" description="������������������storage���������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getStorageInfoSync" value="swan.getStorageInfoSync()" description="������������������storage���������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.removeStorage" value="swan.removeStorage({&#10;  key: '$offset$',&#10;  success: res =&gt; {&#10;   &#10;  } &#10;})" description="������������������������������������ key" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.removeStorageSync" value="swan.removeStorageSync()" description="������������������������������������ key" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.clearStorage" value="swan.clearStorage()" description="������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.clearStorageSync" value="swan.clearStorageSync()" description="������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getLocation" value="swan.getLocation({&#10;  success: res =&gt; {&#10;&#10;  }&#10;})" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.chooseLocation" value="swan.chooseLocation({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.openLocation" value=" swan.openLocation({&#10;   &#10; })" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getNetworkType" value="swan.getNetworkType({&#10;  success:res =&gt; {&#10;   &#10;  }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getSystemInfo" value="swan.getSystemInfo({&#10;  success: res =&gt; {&#10; &#10;  }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getSystemInfoSync" value="swan.getSystemInfoSync({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onAccelerometerChange" value="swan.onAccelerometerChange(res=&gt;{&#10; &#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.onCompassChange" value="swan.onCompassChange(res =&gt; {&#10; &#10;});" description="������������������������������5���/���" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.makePhoneCall" value="swan.makePhoneCall({&#10;  phoneNumber: '$offset$' //������������������������������������������&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.showToast" value="swan.showToast({&#10;  title: '$offset$'&#10;&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.showModal" value="swan.showModal({&#10;  title: '$offset$',&#10;  content: '',&#10;  success: res=&gt;{&#10;    if (res.confirm) {&#10;    &#10;    }&#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.showActionSheet" value="swan.showActionSheet({&#10;  itemList: [$offset$],&#10;  success:res =&gt; {&#10;    &#10;      &#10;    &#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.setNavigationBarTitle" value="swan.setNavigationBarTitle({&#10;  title: '$offset$'&#10;})" description="���������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.showNavigationBarLoading" value="swan.showNavigationBarLoading()" description="������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.hideNavigationBarLoading" value="swan.hideNavigationBarLoading()&#10;" description="���������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.navigateTo" value="swan.navigateTo({&#10;  url: '$offset$'&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.redirectTo" value="swan.redirectTo({&#10;  url: '$offset$'&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.navigateBack" value="swan.navigateBack()" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.createAnimation" value="swan.createAnimation({$offset$})" description="������������������������animation" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.createContext" value="swan.createContext();" description="������������������������������context������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.drawCanvas" value="  swan.drawCanvas({&#10;      canvasId: '$offset$'&#10;   })" description="������canvas" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.canvasToTempFilePath" value="swan.canvasToTempFilePath({&#10;    canvasId:'$offset$'&#10;})" description="������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.hideKeyboard" value="swan.hideKeyboard();" description="������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.stopPullDownRefresh" value="swan.stopPullDownRefresh()" description="������������������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.login" value="swan.login({$offset$})" description="���������������������������������code���������������������������������������������������������������������openid��� ������������������ ���������������session_key���������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
+        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.getUserInfo" value="swan.getUserInfo({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������������������ swan.login ���������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+    <template name="swan.requestPayment" value="swan.requestPayment({&#10;   'timeStamp': '',&#10;   'nonceStr': '',&#10;   'package': '',&#10;   'signType': 'MD5',&#10;   'paySign': '',&#10;   'success':res =&gt; {&#10;   },&#10;   'fail': res =&gt; {&#10;   }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="JAVA_SCRIPT" value="true" />
+            <option name="JS_EXPRESSION" value="true" />
+            <option name="JSX_HTML" value="true" />
+            <option name="JS_STATEMENT" value="true" />
+        </context>
+    </template>
+</templateSet>
