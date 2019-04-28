@@ -4,6 +4,13 @@ import bs4
 import requests
 import HTMLParser
 import json
+from xml.dom.minidom import Document
+
+# 写入xml
+doc = Document()
+templateSet = doc.createElement('templateSet')
+templateSet.setAttribute('group', 'SwanGroup')
+doc.appendChild(templateSet)
 
 parser = HTMLParser.HTMLParser()
 # 遍历控件列表
@@ -49,15 +56,34 @@ for component in api_tags:
                     attr_item['required'] = value.get_text()
                 elif j == 3:
                     attr_item['default'] = value.get_text()
-                elif j == 3:
+                elif j == 4:
                     attr_item['desc'] = parser.unescape(value.get_text())
             attr_array.append(attr_item)
     api_json['attrs'] = attr_array
     output.append(api_json)
+    template = doc.createElement('template')
+    template.setAttribute('name', tag)
+    template.setAttribute('value', tag)
+    template.setAttribute('toReformat', "false")
+    template.setAttribute('toShortenFQNames', "true")
+    template.setAttribute('description', desc)
+    templateSet.appendChild(template)
+    context = doc.createElement('context')
+    options = ["JAVA_SCRIPT", "JS_EXPRESSION", "JSX_HTML", "JS_STATEMENT"]
+    for i in options:
+        option = doc.createElement('option')
+        option.setAttribute("name", i)
+        option.setAttribute("value", "true")
+        context.appendChild(option)
+    template.appendChild(context)
     print api_json
     print '----------------'
 print '已完成抓取{}个控件'.format(len(api_tags))
-# 写入到文件
+# 写入 json 到文件
 fo = open("api_list.json", "w")
 fo.write(json.dumps(output))
 fo.close()
+
+# 写入 xml 到文件
+with open("api_list.xml", 'w') as f:
+    f.write(doc.toprettyxml(indent='\t', encoding='utf-8'))
