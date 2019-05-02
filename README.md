@@ -7,3 +7,4 @@ baidu smart app dev plugin for WebStorm IDE
 - [sublime-swan](https://github.com/efe-blue/sublime-swan)
 - [wecharCodejar](https://github.com/miaozhang9/wecharCodejar)
 - [WePY 插件](http://wepy.iniself.com/)
+- [Matchmaker](https://github.com/lypeer/Matchmaker)
