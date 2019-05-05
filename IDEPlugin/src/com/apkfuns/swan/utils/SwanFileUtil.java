@@ -1,18 +1,23 @@
 package com.apkfuns.swan.utils;
 
+import com.apkfuns.swan.file.SwanFileType;
 import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.apkfuns.swan.tag.SwanTag;
+import com.intellij.json.JsonFileType;
+import com.intellij.lang.javascript.JavaScriptFileType;
 import com.intellij.lang.javascript.psi.*;
+import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
+import com.intellij.psi.css.CssFileType;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
-import com.sun.codemodel.internal.JStringLiteral;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -29,11 +34,20 @@ public class SwanFileUtil {
      * @return bool
      */
     public static boolean isSwanFile(PsiElement element) {
-        if (element != null && element.getContainingFile() != null) {
-            return element.getContainingFile().getName().endsWith(".swan");
+        if (element != null ) {
+            return isSwanFile(element.getContainingFile());
         } else {
             return false;
         }
+    }
+
+    /**
+     * 是否是swan文件
+     * @param psiFile PsiFile
+     * @return bool
+     */
+    public static boolean isSwanFile(PsiFile psiFile) {
+        return psiFile != null && psiFile.getName().endsWith(".swan");
     }
 
     /**
@@ -121,19 +135,51 @@ public class SwanFileUtil {
         return Collections.emptySet();
     }
 
-    public static Set<String> getAllVarNames(PsiElement element) {
+    /**
+     * 获取data结点下属性
+     *
+     * @param element 结点
+     * @return data结点下属性名称
+     */
+    public static Set<String> getDataVarNames(PsiElement element) {
         JSProperty[] properties = getPageProperties(element);
         if (properties != null) {
             Set<String> propertySet = new HashSet<>();
             for (JSProperty property : properties) {
-                if (property.getValue() instanceof JSLiteralExpression
-                        || property.getValue() instanceof JSArrayLiteralExpression
-                        || property.getValue() instanceof JSObjectLiteralExpression) {
-                    propertySet.add(property.getName());
+                if (property.getValue() instanceof JSObjectLiteralExpression
+                        && "data".equals(property.getName())) {
+                    JSProperty[] childProperties = ((JSObjectLiteralExpression) property.getValue()).getProperties();
+                    for (JSProperty childProperty : childProperties) {
+                        if (childProperty.getValue() instanceof JSLiteralExpression
+                                || childProperty.getValue() instanceof JSArrayLiteralExpression
+                                || childProperty.getValue() instanceof JSObjectLiteralExpression) {
+                            propertySet.add(childProperty.getName());
+                        }
+                    }
+                    break;
                 }
             }
             return propertySet;
         }
         return Collections.emptySet();
+    }
+
+    /**
+     * 获取文件类型
+     *
+     * @param fileName 文件名
+     * @return LanguageFileType
+     */
+    public static LanguageFileType getFileType(@NotNull String fileName) {
+        CharSequence ext = FileUtil.getExtension(fileName, "swan");
+        if ("js".contentEquals(ext)) {
+            return JavaScriptFileType.INSTANCE;
+        } else if ("json".contentEquals(ext)) {
+            return JsonFileType.INSTANCE;
+        } else if ("css".contentEquals(ext)) {
+            return CssFileType.INSTANCE;
+        } else {
+            return SwanFileType.INSTANCE;
+        }
     }
 }

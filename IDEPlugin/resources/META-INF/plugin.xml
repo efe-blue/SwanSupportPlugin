@@ -1,44 +1,71 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
-  <type>swan support</type>
-  <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>swan support</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Enter short description for your plugin here.<br>
       <em>most HTML tags may be used</em>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Add change notes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
 
-  <depends>com.intellij.modules.xml</depends>
-  <depends>com.intellij.modules.lang</depends>
-  <depends>JavaScript</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>JavaScript</depends>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <fileTypeFactory implementation="com.apkfuns.swan.factory.SwanFileTypeFactory"/>
-    <xml.tagNameProvider implementation="com.apkfuns.swan.provider.SwanTagNameProvider"/>
-    <xml.elementDescriptorProvider implementation="com.apkfuns.swan.provider.SwanTagNameProvider"/>
-    <xml.attributeDescriptorsProvider implementation="com.apkfuns.swan.attributes.SwanAttrDescriptorProvider"/>
-    <completion.contributor language="HTML" implementationClass="com.apkfuns.swan.factory.SwanCompletionContributor"/>
-    <defaultLiveTemplatesProvider implementation="com.apkfuns.swan.provider.SwanTemplatesProvider"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+        <intentionAction>
+            <className>com.apkfuns.swan.intention.SwanTagTextIntention</className>
+            <category>swan</category>
+            <descriptionDirectoryName>SwanTagTextIntention</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>com.apkfuns.swan.intention.SwanDocumentIntention</className>
+            <category>swan</category>
+            <descriptionDirectoryName>SwanDocumentIntention</descriptionDirectoryName>
+        </intentionAction>
+
+        <fileTypeFactory implementation="com.apkfuns.swan.file.SwanFileTypeFactory"/>
+        <xml.tagNameProvider implementation="com.apkfuns.swan.tag.SwanTagNameProvider"/>
+        <xml.elementDescriptorProvider implementation="com.apkfuns.swan.tag.SwanTagNameProvider"/>
+        <xml.attributeDescriptorsProvider implementation="com.apkfuns.swan.attributes.SwanAttrDescriptorProvider"/>
+        <completion.contributor language="HTML" order="first,before xml,before liveTemplates"
+                                implementationClass="com.apkfuns.swan.completion.SwanCompletionContributor"/>
+        <defaultLiveTemplatesProvider implementation="com.apkfuns.swan.template.SwanTemplatesProvider"/>
+
+        <annotator language="HTML" implementationClass="com.apkfuns.swan.annotator.SwanAnnotator"/>
+        <directoryProjectGenerator implementation="com.apkfuns.swan.wizard.SwanProjectGenerator"/>
+        <typedHandler implementation="com.apkfuns.swan.utils.TypeHandleListener"/>
+    </extensions>
+    <extensions defaultExtensionNs="JavaScript">
+        <smartCompletionContributor language="HTML" implementationClass="com.apkfuns.swan.completion.SwanSmartCompletionContributor"/>
+    </extensions>
+
+    <actions>
+        <action id="component.new" class="com.apkfuns.swan.action.NewSwanComponentAction" text="Swan Component"
+                description="Create New Swan Component" icon="/icons/icon.svg">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+        <action id="page.new" class="com.apkfuns.swan.action.NewSwanPageAction" text="Swan Page"
+                description="Create New Swan Page" icon="/icons/icon.svg">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
 
 </idea-plugin>

@@ -1,4 +1,4 @@
-package com.apkfuns.swan.provider;
+package com.apkfuns.swan.template;
 
 import com.intellij.codeInsight.template.impl.DefaultLiveTemplatesProvider;
 import org.jetbrains.annotations.Nullable;

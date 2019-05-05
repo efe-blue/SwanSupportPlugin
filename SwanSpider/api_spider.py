@@ -53,7 +53,7 @@ for component in api_tags:
                 elif j == 1:
                     attr_item['type'] = value.get_text()
                 elif j == 2:
-                    attr_item['required'] = value.get_text()
+                    attr_item['required'] = True if value.get_text() == '' else False
                 elif j == 3:
                     attr_item['default'] = value.get_text()
                 elif j == 4:
@@ -61,9 +61,22 @@ for component in api_tags:
             attr_array.append(attr_item)
     api_json['attrs'] = attr_array
     output.append(api_json)
+    print api_json
+
+    # 生成 xml
     template = doc.createElement('template')
     template.setAttribute('name', tag)
-    template.setAttribute('value', tag)
+    code_holder = tag
+    if len(attr_array) == 0:
+        code_holder += '();'
+    else:
+        code_holder += '({&#10;'
+        for argument in attr_array:
+            pass
+        code_holder += '});'
+        pass
+    code_holder = tag + '({&#10;})'
+    template.setAttribute('value', code_holder)
     template.setAttribute('toReformat', "false")
     template.setAttribute('toShortenFQNames', "true")
     template.setAttribute('description', desc)
@@ -76,9 +89,8 @@ for component in api_tags:
         option.setAttribute("value", "true")
         context.appendChild(option)
     template.appendChild(context)
-    print api_json
     print '----------------'
-print '已完成抓取{}个控件'.format(len(api_tags))
+print '已完成抓取{}个API'.format(len(api_tags))
 # 写入 json 到文件
 fo = open("api_list.json", "w")
 fo.write(json.dumps(output))

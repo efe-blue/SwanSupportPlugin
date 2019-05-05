@@ -1,8 +1,8 @@
 package com.apkfuns.swan.file;
 
+import com.apkfuns.swan.utils.SwanIcon;
 import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.openapi.fileTypes.LanguageFileType;
-import icons.JavaScriptPsiIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,6 +37,6 @@ public class SwanFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return JavaScriptPsiIcons.FileTypes.TypeScriptFile;
+        return SwanIcon.ICON;
     }
 }

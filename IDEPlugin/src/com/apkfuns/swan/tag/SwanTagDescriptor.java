@@ -1,4 +1,4 @@
-package com.apkfuns.swan.provider;
+package com.apkfuns.swan.tag;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlAttribute;

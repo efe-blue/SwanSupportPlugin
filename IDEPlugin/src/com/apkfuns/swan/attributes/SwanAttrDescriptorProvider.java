@@ -21,6 +21,9 @@ public class SwanAttrDescriptorProvider implements XmlAttributeDescriptorsProvid
             for (SwanAttribute attribute : swanTag.getAttrs()) {
                 descriptorList.add(new SwanAttrDescriptor(attribute));
             }
+            for (SwanAttribute attribute : DefaultAttrDescriptor.DEFAULT_ATTRS) {
+                descriptorList.add(new SwanAttrDescriptor(attribute));
+            }
             return descriptorList.toArray(new SwanAttrDescriptor[0]);
         }
         return new SwanAttrDescriptor[0];

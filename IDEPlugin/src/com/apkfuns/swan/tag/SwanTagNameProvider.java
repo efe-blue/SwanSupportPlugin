@@ -1,6 +1,7 @@
-package com.apkfuns.swan.provider;
+package com.apkfuns.swan.tag;
 
 import com.apkfuns.swan.tag.SwanTag;
+import com.apkfuns.swan.utils.SwanIcon;
 import com.apkfuns.swan.utils.SwanTagManager;
 import com.intellij.codeInsight.completion.XmlTagInsertHandler;
 import com.intellij.codeInsight.lookup.LookupElement;
@@ -28,6 +29,7 @@ public class SwanTagNameProvider implements XmlTagNameProvider, XmlElementDescri
                     .create(tag.getTag())
                     .withInsertHandler(XmlTagInsertHandler.INSTANCE)
                     .withBoldness(true)
+                    .withIcon(SwanIcon.ICON)
                     .withTypeText(tag.getDesc());
             list.add(element);
         }

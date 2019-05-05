@@ -1,4 +1,4 @@
-package com.apkfuns.swan.factory;
+package com.apkfuns.swan.file;
 
 import com.apkfuns.swan.file.SwanFileType;
 import com.intellij.openapi.fileTypes.FileTypeConsumer;

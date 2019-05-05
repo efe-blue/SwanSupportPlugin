@@ -1,7 +1,8 @@
-package com.apkfuns.swan.factory;
+package com.apkfuns.swan.completion;
 
 import com.apkfuns.swan.model.ValueType;
 import com.apkfuns.swan.utils.SwanFileUtil;
+import com.apkfuns.swan.utils.SwanIcon;
 import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
@@ -17,6 +18,7 @@ import java.util.Set;
  * 代码自动提醒
  */
 public class SwanCompletionContributor extends CompletionContributor {
+
     public SwanCompletionContributor() {
         extend(CompletionType.BASIC, PlatformPatterns.psiElement(PsiElement.class),
                 new CompletionProvider<CompletionParameters>() {
@@ -24,33 +26,42 @@ public class SwanCompletionContributor extends CompletionContributor {
                     protected void addCompletions(@NotNull CompletionParameters completionParameters,
                                                   @NotNull ProcessingContext processingContext,
                                                   @NotNull CompletionResultSet resultSet) {
-                        if (!SwanFileUtil.isSwanFile(completionParameters.getPosition())) {
-                            return;
-                        }
-                        PsiElement psiElement = completionParameters.getPosition().getContext();
-                        if (psiElement instanceof XmlAttributeValue) {
-                            final XmlAttributeValue value = (XmlAttributeValue) psiElement;
-                            if (SwanFileUtil.getValueType(value) == ValueType.FUNCTION) {
-                                Set<String> functionSet = SwanFileUtil.getAllFunctionNames(value);
-                                for (String functionName : functionSet) {
-                                    resultSet.addElement(LookupElementBuilder.create(functionName)
-                                            .withLookupString(functionName)
-                                            .withInsertHandler(new InsertHandler<LookupElement>() {
-                                                @Override
-                                                public void handleInsert(@NotNull InsertionContext insertionContext,
-                                                                         @NotNull LookupElement lookupElement) {
-                                                    performInsert(value, insertionContext, lookupElement);
-                                                }
-                                            })
-                                            .withBoldness(true)
-                                            .withTypeText("Function"));
-                                }
-                            } else {
-
-                            }
-                        }
+                        SwanCompletionContributor.this.addCompletions(completionParameters, processingContext, resultSet);
                     }
                 });
+    }
+
+    private void addCompletions(@NotNull CompletionParameters completionParameters, @NotNull ProcessingContext processingContext,
+                                @NotNull CompletionResultSet resultSet) {
+        if (!SwanFileUtil.isSwanFile(completionParameters.getPosition())) {
+            return;
+        }
+        PsiElement psiElement = completionParameters.getPosition().getContext();
+        if (psiElement instanceof XmlAttributeValue) {
+            final XmlAttributeValue value = (XmlAttributeValue) psiElement;
+            ValueType valueType = SwanFileUtil.getValueType(value);
+            if (valueType == ValueType.FUNCTION) {
+                Set<String> functionSet = SwanFileUtil.getAllFunctionNames(value);
+                for (String functionName : functionSet) {
+                    resultSet.addElement(LookupElementBuilder.create(functionName)
+                            .withLookupString(functionName)
+                            .withInsertHandler((insertionContext, lookupElement) -> performInsert(value, insertionContext, lookupElement))
+                            .withIcon(SwanIcon.ICON)
+                            .withBoldness(true)
+                            .withTypeText("Function"));
+                }
+            } else if (valueType == ValueType.MUSTACHE){
+                Set<String> varNames = SwanFileUtil.getDataVarNames(value);
+                for (String name : varNames) {
+                    resultSet.addElement(LookupElementBuilder.create("{{" + name + "}}")
+                            .withLookupString(name)
+                            .withInsertHandler((insertionContext, lookupElement) -> performInsert(value, insertionContext, lookupElement))
+                            .withIcon(SwanIcon.ICON)
+                            .withBoldness(true)
+                            .withTypeText("Var"));
+                }
+            }
+        }
     }
 
     private void performInsert(XmlAttributeValue value, InsertionContext insertionContext, LookupElement lookupElement) {

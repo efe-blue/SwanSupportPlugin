@@ -3,6 +3,7 @@ package com.apkfuns.swan.attributes;
 import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.xml.XmlElement;
 import com.intellij.xml.impl.BasicXmlAttributeDescriptor;
 import com.intellij.xml.impl.XmlAttributeDescriptorEx;
 import org.jetbrains.annotations.NotNull;
@@ -78,4 +79,6 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
         }
         return new String[0];
     }
+
+
 }

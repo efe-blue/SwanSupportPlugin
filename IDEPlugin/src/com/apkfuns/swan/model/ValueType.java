@@ -2,6 +2,9 @@ package com.apkfuns.swan.model;
 
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 数据类型
+ */
 public enum ValueType {
     MUSTACHE("mustache"),
     NUMBER("number"),
