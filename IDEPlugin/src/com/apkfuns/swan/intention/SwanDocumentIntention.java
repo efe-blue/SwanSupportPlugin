@@ -47,6 +47,6 @@ public class SwanDocumentIntention extends PsiElementBaseIntentionAction {
     @Nls(capitalization = Nls.Capitalization.Sentence)
     @Override
     public @NotNull String getFamilyName() {
-        return "Swan";
+        return "SwanCheckTagEmptyBodyInspection";
     }
 }

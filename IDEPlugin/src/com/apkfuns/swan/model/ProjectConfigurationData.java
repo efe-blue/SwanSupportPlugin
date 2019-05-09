@@ -1,7 +1,7 @@
 package com.apkfuns.swan.model;
 
 /**
- * 项目初始化配置参数
+ * 小程序项目初始化配置参数
  */
 public class ProjectConfigurationData {
     // 创建项目的 appID

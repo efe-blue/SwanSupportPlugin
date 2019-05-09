@@ -29,8 +29,10 @@ public class SwanGeneratorPeer implements ProjectGeneratorPeer<ProjectConfigurat
     private final JRadioButton[] radioButtons;
     // 参数变动回调
     private SettingsListener settingsListener;
+    private ProjectConfigurationData projectConfigurationData;
 
     public SwanGeneratorPeer() {
+        projectConfigurationData = new ProjectConfigurationData();
         radioButtons = new JRadioButton[]{
                 new JRadioButton("空白模板"), new JRadioButton("官方示例")
         };
@@ -64,7 +66,7 @@ public class SwanGeneratorPeer implements ProjectGeneratorPeer<ProjectConfigurat
     @NotNull
     @Override
     public ProjectConfigurationData getSettings() {
-        return new ProjectConfigurationData();
+        return projectConfigurationData;
     }
 
     @Nullable

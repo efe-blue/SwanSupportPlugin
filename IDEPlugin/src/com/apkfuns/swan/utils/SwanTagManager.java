@@ -1,15 +1,15 @@
 package com.apkfuns.swan.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.apkfuns.swan.attributes.DefaultAttrDescriptor;
 import com.apkfuns.swan.tag.SwanTag;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.io.FileUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class SwanTagManager {
     // 单例对象
@@ -20,7 +20,7 @@ public class SwanTagManager {
     private final HashMap<String, SwanTag> swanTagCache = new HashMap<>();
 
     private SwanTagManager() {
-        this.parseNodeList();
+        ApplicationManager.getApplication().executeOnPooledThread(this::parseNodeList);
     }
 
     public static SwanTagManager getInstance() {
@@ -43,6 +43,9 @@ public class SwanTagManager {
             String content = FileUtil.loadTextAndClose(is);
             List<SwanTag> parseList = JSON.parseArray(content, SwanTag.class);
             if (parseList != null) {
+                for (SwanTag swanTag : parseList) {
+                    swanTag.mergeAttr(DefaultAttrDescriptor.DEFAULT_ATTRS);
+                }
                 swanTagList.addAll(parseList);
             }
         } catch (IOException e) {

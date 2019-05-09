@@ -50,7 +50,7 @@ public class SwanCompletionContributor extends CompletionContributor {
                             .withBoldness(true)
                             .withTypeText("Function"));
                 }
-            } else if (valueType == ValueType.MUSTACHE){
+            } else {
                 Set<String> varNames = SwanFileUtil.getDataVarNames(value);
                 for (String name : varNames) {
                     resultSet.addElement(LookupElementBuilder.create("{{" + name + "}}")

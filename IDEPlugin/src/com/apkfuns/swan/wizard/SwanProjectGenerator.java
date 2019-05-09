@@ -1,5 +1,7 @@
 package com.apkfuns.swan.wizard;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.apkfuns.swan.model.ProjectConfigurationData;
 import com.apkfuns.swan.utils.SwanBundle;
 import com.apkfuns.swan.utils.SwanIcon;
@@ -62,17 +64,41 @@ public class SwanProjectGenerator extends WebProjectTemplate<ProjectConfiguratio
         });
     }
 
-    private void copyTemp2Project(ProjectConfigurationData data, String descPath) {
+    /**
+     * 拷贝示例文件到项目文件夹
+     *
+     * @param data     项目初始化配置参数
+     * @param descPath 新建项目目录
+     */
+    private void copyTemp2Project(@NotNull ProjectConfigurationData data, String descPath) {
         try {
-            InputStream is = SwanProjectGenerator.class.getResourceAsStream("/assets/preset.zip");
+            String fileName = data.getWizardType() == ProjectConfigurationData.ProjectWizardType.OFFICIAL ?
+                    "/assets/sample.zip" : "/assets/preset.zip";
+            InputStream inputStream = SwanProjectGenerator.class.getResourceAsStream(fileName);
             File swanPreset = Files.createTempFile("swan_preset", ".zip").toFile();
-            FileUtils.copyInputStreamToFile(is, swanPreset);
-            is.close();
+            FileUtils.copyInputStreamToFile(inputStream, swanPreset);
+            inputStream.close();
             ZipUtil.extract(swanPreset, new File(descPath), null, true);
             FileUtil.asyncDelete(swanPreset);
+            replaceSwanJsonFile(data, descPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 替换 project.swan.json
+     * @param data  ProjectConfigurationData
+     * @param descPath 新建项目目录
+     * @throws IOException
+     */
+    private void replaceSwanJsonFile(@NotNull ProjectConfigurationData data, String descPath) throws IOException {
+        InputStream is = SwanProjectGenerator.class.getResourceAsStream("/pageTemplates/project.swan.json.ft");
+        String templateContent = FileUtil.loadTextAndClose(is);
+        File projectSwanFile = new File(descPath, "project.swan.json");
+        JSONObject projectSwanJson = JSON.parseObject(templateContent);
+        projectSwanJson.put("appid", data.getAppId());
+        FileUtil.writeToFile(projectSwanFile, projectSwanJson.toJSONString(), false);
     }
 
     @Override

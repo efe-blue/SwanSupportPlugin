@@ -1,0 +1,17 @@
+{
+  "appid": "体验",
+  "editor": {
+    "expands": [],
+    "paths": []
+  },
+  "host": "baiduboxapp",
+  "setting": {
+    "urlCheck": false
+  },
+  "swan": {
+    "baiduboxapp": {
+      "swanJsVersion": "3.30.32",
+      "extensionJsVersion": ""
+    }
+  }
+}

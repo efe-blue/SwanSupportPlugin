@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class SwanAttribute {
     @NotNull
     // 属性名称
-    private String name;
+    private String name = "#";
     @Nullable
     // 属性值匹配模式
     private String valuePattern;
@@ -40,43 +40,48 @@ public class SwanAttribute {
         this.defaultValue = defaultValue;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 
+    @Nullable
     public String getValuePattern() {
         return valuePattern;
     }
 
-    public void setValuePattern(String valuePattern) {
+    public void setValuePattern(@Nullable String valuePattern) {
         this.valuePattern = valuePattern;
     }
 
+    @NotNull
     public ValueType getValueType() {
         return valueType;
     }
 
-    public void setValueType(ValueType valueType) {
+    public void setValueType(@NotNull ValueType valueType) {
         this.valueType = valueType;
     }
 
+    @Nullable
     public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public void setDesc(@Nullable String desc) {
         this.desc = desc;
     }
 
+    @Nullable
     public String getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(String defaultValue) {
+    public void setDefaultValue(@Nullable String defaultValue) {
         this.defaultValue = defaultValue;
     }
 

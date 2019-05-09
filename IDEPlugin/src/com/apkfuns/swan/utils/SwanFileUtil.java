@@ -1,6 +1,6 @@
 package com.apkfuns.swan.utils;
 
-import com.apkfuns.swan.file.SwanFileType;
+import com.apkfuns.swan.lang.SwanFileType;
 import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.apkfuns.swan.tag.SwanTag;
@@ -8,6 +8,7 @@ import com.intellij.json.JsonFileType;
 import com.intellij.lang.javascript.JavaScriptFileType;
 import com.intellij.lang.javascript.psi.*;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -19,11 +20,12 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SwanFileUtil {
 
@@ -34,7 +36,7 @@ public class SwanFileUtil {
      * @return bool
      */
     public static boolean isSwanFile(PsiElement element) {
-        if (element != null ) {
+        if (element != null) {
             return isSwanFile(element.getContainingFile());
         } else {
             return false;
@@ -43,6 +45,7 @@ public class SwanFileUtil {
 
     /**
      * 是否是swan文件
+     *
      * @param psiFile PsiFile
      * @return bool
      */
@@ -165,6 +168,43 @@ public class SwanFileUtil {
     }
 
     /**
+     * 查找属性对应的JS表达式
+     *
+     * @param element       xml结点
+     * @param swanAttribute swan 属性
+     * @param varName 变量或者方法名称
+     * @return JS表达式
+     */
+    @Nullable
+    public static JSElement getJSStatementByName(PsiElement element, @Nullable SwanAttribute swanAttribute,
+                                                 @NotNull String varName) {
+        JSProperty[] properties = getPageProperties(element);
+        if (properties == null) {
+            return null;
+        }
+        if (swanAttribute != null && swanAttribute.getValueType() == ValueType.FUNCTION) {
+            for (JSProperty property : properties) {
+                if (varName.equals(property.getName())) {
+                    return property;
+                }
+            }
+        } else {
+            for (JSProperty property : properties) {
+                if (property.getValue() instanceof JSObjectLiteralExpression
+                        && "data".equals(property.getName())) {
+                    JSProperty[] childProperties = ((JSObjectLiteralExpression) property.getValue()).getProperties();
+                    for (JSProperty childProperty : childProperties) {
+                        if (varName.equals(childProperty.getName())) {
+                            return childProperty;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * 获取文件类型
      *
      * @param fileName 文件名
@@ -181,5 +221,17 @@ public class SwanFileUtil {
         } else {
             return SwanFileType.INSTANCE;
         }
+    }
+
+    public static Map<String, TextRange> getVars(String src) {
+        Map<String, TextRange> results = new IdentityHashMap<>();
+        Pattern p = Pattern.compile("\\{\\{.+?\\}\\}");
+        Matcher m = p.matcher(src);
+        while (m.find()) {
+            String g = m.group().replaceAll("\\{+", "").replaceAll("\\}+", "").trim();
+            TextRange textRange = new TextRange(m.start(), m.end());
+            results.put(g, textRange);
+        }
+        return results;
     }
 }

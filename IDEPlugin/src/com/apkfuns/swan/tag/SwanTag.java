@@ -4,10 +4,7 @@ import com.apkfuns.swan.model.SwanAttribute;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SwanTag {
     // Tag名称
@@ -107,6 +104,18 @@ public class SwanTag {
             }
         }
         return null;
+    }
+
+    /**
+     * 合并属性
+     * @param attrs List<SwanAttribute>
+     */
+    public void mergeAttr(SwanAttribute... attrs) {
+        if (this.attrs == null) {
+            this.attrs = Arrays.asList(attrs);
+        } else {
+            this.attrs.addAll(Arrays.asList(attrs));
+        }
     }
 
     @Override
