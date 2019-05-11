@@ -286,7 +286,7 @@ public class SwanFileUtil {
         if (value == null) {
             return null;
         }
-        Matcher matcher = Pattern.compile("\\{\\{(.+?)}}").matcher(value);
+        Matcher matcher = Pattern.compile("\\{\\{(.*?)}}").matcher(value);
         if (matcher.matches()) {
             return matcher.group(1);
         }

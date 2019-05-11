@@ -46,11 +46,6 @@
         <defaultLiveTemplatesProvider implementation="com.apkfuns.swan.template.SwanTemplatesProvider"/>
         <psi.referenceContributor implementation="com.apkfuns.swan.references.SwanReferenceContributor"/>
 
-        <localInspection language="HTML" shortName="HtmlUnknownAttribute" enabledByDefault="true" level="WARNING"
-                         bundle="messages.XmlBundle" key="html.inspections.unknown.attribute"
-                         groupBundle="messages.XmlBundle" groupKey="html.inspections.group.name"
-                         implementationClass="com.intellij.codeInspection.htmlInspections.HtmlUnknownAttributeInspection"/>
-
         <xml.fileNSInfoProvider implementation="com.apkfuns.swan.inspection.SwanFileNSInfoProvider"/>
 
         <lang.smartEnterProcessor language="HTML" implementationClass="com.intellij.codeInsight.completion.XmlSmartEnterProcessor"/>

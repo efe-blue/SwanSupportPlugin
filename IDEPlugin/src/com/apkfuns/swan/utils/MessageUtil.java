@@ -18,5 +18,9 @@ public class MessageUtil {
     public static void warning(Project project, String title, String content) {
         showTopic(project, title, content, NotificationType.WARNING);
     }
+
+    public static void error(Project project, String content) {
+        showTopic(project, "Error", content, NotificationType.ERROR);
+    }
 }
 

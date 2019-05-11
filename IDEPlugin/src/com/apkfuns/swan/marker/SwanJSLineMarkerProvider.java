@@ -22,10 +22,9 @@ import java.awt.event.MouseEvent;
  */
 public class SwanJSLineMarkerProvider implements LineMarkerProvider, GutterIconNavigationHandler<PsiElement> {
 
-    private VirtualFile swanFile = null;
-
     @Override
     public void navigate(MouseEvent mouseEvent, PsiElement psiElement) {
+        VirtualFile swanFile = SwanFileUtil.getTargetSwanFile(psiElement);
         if (swanFile == null) {
             return;
         }
@@ -44,7 +43,7 @@ public class SwanJSLineMarkerProvider implements LineMarkerProvider, GutterIconN
         }
         JSObjectLiteralExpression page = SwanFileUtil.getPageExpression((JSFile) psiFile);
         if (psiElement == page) {
-            swanFile = SwanFileUtil.getTargetSwanFile(psiElement);
+            VirtualFile swanFile = SwanFileUtil.getTargetSwanFile(psiElement);
             if (swanFile == null) {
                 return null;
             }
