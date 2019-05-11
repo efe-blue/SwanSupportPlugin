@@ -4,7 +4,6 @@ import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.apkfuns.swan.tag.SwanTag;
 import com.apkfuns.swan.utils.SwanFileUtil;
-import com.apkfuns.swan.utils.SwanLog;
 import com.apkfuns.swan.utils.SwanTagManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
@@ -25,30 +24,32 @@ public class SwanAttrReferenceProvider extends PsiReferenceProvider {
         if (!SwanFileUtil.isSwanFile(psiElement)) {
             return new PsiReference[0];
         }
-        String originText = psiElement.getText();
-        String text = originText;
-        if (text.startsWith("\"") && text.endsWith("\"")) {
-            text = text.substring(1, text.length() - 1);
-        }
-        if (text.startsWith("{{") && text.endsWith("}}")) {
-            text = text.substring(2, text.length() - 2);
-        }
         if (psiElement.getParent() != null && psiElement.getParent().getParent() != null) {
+            String originText = psiElement.getText();
+            String text = originText;
+            if (text.startsWith("\"") && text.endsWith("\"")) {
+                text = text.substring(1, text.length() - 1);
+            }
+            String mustacheValue = SwanFileUtil.getMustacheValue(text);
+            if (mustacheValue != null) {
+                text = mustacheValue;
+            }
             PsiElement tag = psiElement.getParent().getParent();
             String attr = null;
             if (psiElement.getContext() != null) {
                 attr = ((XmlAttribute) psiElement.getContext()).getName();
             }
             if (attr != null && tag instanceof XmlTag) {
+                if (isHtmlAttr(attr)) {
+                    return new PsiReference[0];
+                }
                 String tagName = ((XmlTag) tag).getName();
-                SwanLog.debug("unNormal tag:" + tagName);
                 SwanTag swanTag = SwanTagManager.getInstance().getTag(tagName);
                 if (swanTag != null) {
                     SwanAttribute swanAttribute = swanTag.getAttribute(attr);
                     if (swanAttribute != null) {
                         return new PsiReference[]{new SwanAttrReference(psiElement, swanAttribute, text)};
-                    } else if (!invalidAttr(attr)) {
-                        SwanLog.debug("unNormal attr:" + text);
+                    } else {
                         boolean isFunction = !originText.startsWith("{{");
                         SwanAttribute newAttr = null;
                         if (isFunction) {
@@ -63,7 +64,13 @@ public class SwanAttrReferenceProvider extends PsiReferenceProvider {
         return new PsiReference[0];
     }
 
-    private boolean invalidAttr(String attrName) {
-        return "class".equals(attrName) || "id".equals(attrName);
+    /**
+     * 是否是html 的属性
+     *
+     * @param attrName 属性名称
+     * @return bool
+     */
+    private boolean isHtmlAttr(String attrName) {
+        return "class".equals(attrName) || "id".equals(attrName) || "style".equals(attrName);
     }
 }

@@ -1,7 +1,6 @@
 package com.apkfuns.swan.references;
 
 import com.apkfuns.swan.utils.SwanFileUtil;
-import com.apkfuns.swan.utils.SwanLog;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
@@ -28,7 +27,6 @@ public class SwanValueReferenceProvider extends PsiReferenceProvider {
                 List<PsiReference> references = new ArrayList<>();
                 Map<String, TextRange> vars = SwanFileUtil.getVars(text);
                 Set<String> varSet = SwanFileUtil.getDataVarNames(psiElement);
-                SwanLog.debug("var=" + vars + ", varSet=" + varSet);
                 for (Map.Entry<String, TextRange> entry : vars.entrySet()) {
                     if (varSet.contains(entry.getKey())) {
                         references.add(new SwanValueReference((XmlTag) psiElement, entry.getValue(), entry.getKey()));

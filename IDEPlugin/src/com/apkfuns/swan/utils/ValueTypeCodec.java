@@ -9,6 +9,9 @@ import com.apkfuns.swan.model.ValueType;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+/**
+ * 支持 {@link ValueType} 对象和字符串互相转换
+ */
 public class ValueTypeCodec implements ObjectSerializer, ObjectDeserializer {
     @Override
     public <T> T deserialze(DefaultJSONParser parser, Type type, Object fieldName) {

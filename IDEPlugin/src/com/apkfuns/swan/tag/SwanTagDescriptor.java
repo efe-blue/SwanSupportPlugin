@@ -1,23 +1,41 @@
 package com.apkfuns.swan.tag;
 
+import com.apkfuns.swan.attributes.SwanAttrDescriptor;
+import com.apkfuns.swan.model.SwanAttribute;
+import com.intellij.openapi.util.Condition;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlTag;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.xml.XmlAttributeDescriptor;
 import com.intellij.xml.XmlElementDescriptor;
 import com.intellij.xml.XmlElementsGroup;
 import com.intellij.xml.XmlNSDescriptor;
+import com.intellij.xml.impl.schema.AnyXmlAttributeDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class SwanTagDescriptor implements XmlElementDescriptor {
+
+    private @NotNull SwanTag swanTag;
+    private @NotNull XmlTag xmlTag;
+    private SwanAttrDescriptor[] attrDescriptors;
+
+    public SwanTagDescriptor(@NotNull SwanTag swanTag, @NotNull XmlTag xmlTag) {
+        this.swanTag = swanTag;
+        this.xmlTag = xmlTag;
+    }
+
     @Override
     public String getQualifiedName() {
-        return null;
+        return getName();
     }
 
     @Override
     public String getDefaultName() {
-        return null;
+        return getName();
     }
 
     @Override
@@ -32,17 +50,37 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
 
     @Override
     public XmlAttributeDescriptor[] getAttributesDescriptors(@Nullable XmlTag xmlTag) {
-        return new XmlAttributeDescriptor[0];
+        if (xmlTag == null) {
+            return null;
+        }
+        if (attrDescriptors != null) {
+            return attrDescriptors;
+        }
+        List<SwanAttribute> swanAttributes = swanTag.getAttrs();
+        attrDescriptors = new SwanAttrDescriptor[swanAttributes.size()];
+        for (int i = 0; i < attrDescriptors.length; i++) {
+            attrDescriptors[i] = new SwanAttrDescriptor(swanAttributes.get(i), xmlTag);
+        }
+        return attrDescriptors;
     }
 
     @Override
-    public @Nullable XmlAttributeDescriptor getAttributeDescriptor(String s, @Nullable XmlTag xmlTag) {
-        return null;
+    public @Nullable XmlAttributeDescriptor getAttributeDescriptor(String attributeName, @Nullable XmlTag xmlTag) {
+        XmlAttributeDescriptor descriptor =  ContainerUtil.find(getAttributesDescriptors(xmlTag), new Condition<XmlAttributeDescriptor>() {
+            @Override
+            public boolean value(XmlAttributeDescriptor descriptor1) {
+                return attributeName.equals(descriptor1.getName());
+            }
+        });
+        if (descriptor == null) {
+            descriptor = new AnyXmlAttributeDescriptor(attributeName);
+        }
+        return descriptor;
     }
 
     @Override
-    public @Nullable XmlAttributeDescriptor getAttributeDescriptor(XmlAttribute xmlAttribute) {
-        return null;
+    public @Nullable XmlAttributeDescriptor getAttributeDescriptor(XmlAttribute attribute) {
+        return getAttributeDescriptor(attribute.getName(), attribute.getParent());
     }
 
     @Override
@@ -57,7 +95,7 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
 
     @Override
     public int getContentType() {
-        return 0;
+        return CONTENT_TYPE_ANY;
     }
 
     @Override
@@ -67,17 +105,17 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
 
     @Override
     public PsiElement getDeclaration() {
-        return null;
+        return xmlTag;
     }
 
     @Override
     public String getName(PsiElement psiElement) {
-        return null;
+        return getName();
     }
 
     @Override
     public String getName() {
-        return null;
+        return swanTag.getTag();
     }
 
     @Override

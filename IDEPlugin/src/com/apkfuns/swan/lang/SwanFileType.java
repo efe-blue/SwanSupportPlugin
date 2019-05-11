@@ -21,7 +21,7 @@ public class SwanFileType extends XmlLikeFileType implements DomSupportEnabled {
     @NotNull
     @Override
     public String getName() {
-        return "SwanCheckTagEmptyBodyInspection Harmony";
+        return "Swan Harmony";
     }
 
     @NotNull

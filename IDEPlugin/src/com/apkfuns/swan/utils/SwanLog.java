@@ -8,7 +8,7 @@ import com.intellij.openapi.diagnostic.Logger;
  * 日志管理类
  */
 public class SwanLog {
-    private static final String NAME = "SwanCheckTagEmptyBodyInspection";
+    private static final String NAME = "Swan";
     private static final boolean IS_DEBUG = true;
     private static final Logger LOG = Logger.getInstance(SwanLog.class);
 

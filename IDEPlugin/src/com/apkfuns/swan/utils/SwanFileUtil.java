@@ -77,13 +77,24 @@ public class SwanFileUtil {
         return ValueType.ANY;
     }
 
+    @Nullable
+    public static VirtualFile getTargetSwanFile(PsiElement psiElement) {
+        VirtualFile jsFile = psiElement.getContainingFile().getOriginalFile().getVirtualFile();
+        File swanFile = new File(jsFile.getParent().getPath(), jsFile.getNameWithoutExtension() + ".swan");
+        if (swanFile.exists() && swanFile.isFile()) {
+            return LocalFileSystem.getInstance().refreshAndFindFileByIoFile(swanFile);
+        }
+        return null;
+    }
+
     /**
-     * 获取js文件的page结点的所有属性和方法
+     * 获取swan 文件对象的js文件对象
      *
-     * @param element 当前结点
-     * @return 属性列表
+     * @param element swan元素
+     * @return JSFile
      */
-    private static JSProperty[] getPageProperties(PsiElement element) {
+    @Nullable
+    public static JSFile getTargetJsFile(PsiElement element) {
         VirtualFile swanFile = element.getContainingFile().getOriginalFile().getVirtualFile();
         File jsFile = new File(swanFile.getParent().getPath(), swanFile.getNameWithoutExtension() + ".js");
         if (jsFile.exists() && jsFile.isFile()) {
@@ -91,26 +102,53 @@ public class SwanFileUtil {
             if (swanJsFile != null) {
                 PsiFile swanPsiFile = PsiManager.getInstance(element.getProject()).findFile(swanJsFile);
                 if (swanPsiFile instanceof JSFile) {
-                    JSFile matchJsFile = (JSFile) swanPsiFile;
-                    JSSourceElement[] jsSourceElements = matchJsFile.getStatements();
-                    for (JSSourceElement sourceElement : jsSourceElements) {
-                        if (sourceElement instanceof JSExpressionStatement) {
-                            JSExpression expression = ((JSExpressionStatement) sourceElement).getExpression();
-                            if (expression instanceof JSCallExpression) {
-                                JSCallExpression callExpression = (JSCallExpression) expression;
-                                // 找到Page方法
-                                if (callExpression.getMethodExpression() != null && "Page".equals(
-                                        callExpression.getMethodExpression().getText())) {
-                                    JSExpression[] argumentExpressions = callExpression.getArguments();
-                                    if (argumentExpressions.length == 1 && argumentExpressions[0] instanceof JSObjectLiteralExpression) {
-                                        JSObjectLiteralExpression jsObjectLiteralExpression = (JSObjectLiteralExpression) argumentExpressions[0];
-                                        return jsObjectLiteralExpression.getProperties();
-                                    }
-                                }
-                            }
+                    return (JSFile) swanPsiFile;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取js文件里面的Page方法参数对象
+     *
+     * @param matchJsFile js文件
+     * @return Page参数
+     */
+    @Nullable
+    public static JSObjectLiteralExpression getPageExpression(@NotNull JSFile matchJsFile) {
+        JSSourceElement[] jsSourceElements = matchJsFile.getStatements();
+        for (JSSourceElement sourceElement : jsSourceElements) {
+            if (sourceElement instanceof JSExpressionStatement) {
+                JSExpression expression = ((JSExpressionStatement) sourceElement).getExpression();
+                if (expression instanceof JSCallExpression) {
+                    JSCallExpression callExpression = (JSCallExpression) expression;
+                    // 找到Page方法
+                    if (callExpression.getMethodExpression() != null && "Page".equals(
+                            callExpression.getMethodExpression().getText())) {
+                        JSExpression[] argumentExpressions = callExpression.getArguments();
+                        if (argumentExpressions.length == 1 && argumentExpressions[0] instanceof JSObjectLiteralExpression) {
+                            return (JSObjectLiteralExpression) argumentExpressions[0];
                         }
                     }
                 }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取js文件的page结点的所有属性和方法
+     *
+     * @param element 当前结点
+     * @return 属性列表
+     */
+    private static JSProperty[] getPageProperties(PsiElement element) {
+        JSFile matchJsFile = getTargetJsFile(element);
+        if (matchJsFile != null) {
+            JSObjectLiteralExpression pageExpression = getPageExpression(matchJsFile);
+            if (pageExpression != null) {
+                return pageExpression.getProperties();
             }
         }
         return null;
@@ -172,7 +210,7 @@ public class SwanFileUtil {
      *
      * @param element       xml结点
      * @param swanAttribute swan 属性
-     * @param varName 变量或者方法名称
+     * @param varName       变量或者方法名称
      * @return JS表达式
      */
     @Nullable
@@ -192,12 +230,14 @@ public class SwanFileUtil {
             for (JSProperty property : properties) {
                 if (property.getValue() instanceof JSObjectLiteralExpression
                         && "data".equals(property.getName())) {
+                    SwanLog.debug("varName=" + varName);
                     JSProperty[] childProperties = ((JSObjectLiteralExpression) property.getValue()).getProperties();
                     for (JSProperty childProperty : childProperties) {
                         if (varName.equals(childProperty.getName())) {
                             return childProperty;
                         }
                     }
+                    break;
                 }
             }
         }
@@ -211,7 +251,7 @@ public class SwanFileUtil {
      * @return LanguageFileType
      */
     public static LanguageFileType getFileType(@NotNull String fileName) {
-        CharSequence ext = FileUtil.getExtension(fileName, "swan");
+        CharSequence ext = FileUtil.getExtension(fileName, SwanFileType.EXTENSION);
         if ("js".contentEquals(ext)) {
             return JavaScriptFileType.INSTANCE;
         } else if ("json".contentEquals(ext)) {
@@ -225,7 +265,7 @@ public class SwanFileUtil {
 
     public static Map<String, TextRange> getVars(String src) {
         Map<String, TextRange> results = new IdentityHashMap<>();
-        Pattern p = Pattern.compile("\\{\\{.+?\\}\\}");
+        Pattern p = Pattern.compile("\\{\\{.+?}}");
         Matcher m = p.matcher(src);
         while (m.find()) {
             String g = m.group().replaceAll("\\{+", "").replaceAll("\\}+", "").trim();
@@ -233,5 +273,23 @@ public class SwanFileUtil {
             results.put(g, textRange);
         }
         return results;
+    }
+
+    /**
+     * 获取模板内字符串，非该模式返回空
+     *
+     * @param value 待检测字符串
+     * @return null | 变量内容
+     */
+    @Nullable
+    public static String getMustacheValue(String value) {
+        if (value == null) {
+            return null;
+        }
+        Matcher matcher = Pattern.compile("\\{\\{(.+?)}}").matcher(value);
+        if (matcher.matches()) {
+            return matcher.group(1);
+        }
+        return null;
     }
 }

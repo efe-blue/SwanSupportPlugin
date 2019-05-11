@@ -2,6 +2,7 @@ package com.apkfuns.swan.references;
 
 import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.utils.SwanFileUtil;
+import com.intellij.lang.javascript.psi.JSElement;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReferenceBase;
 import com.intellij.psi.xml.XmlAttributeValue;
@@ -31,6 +32,10 @@ public class SwanAttrReference extends PsiReferenceBase<PsiElement> {
         if (!(element instanceof XmlAttributeValue)) {
             return null;
         }
-        return SwanFileUtil.getJSStatementByName(element, attribute, varName);
+        JSElement jsElement = SwanFileUtil.getJSStatementByName(element, attribute, varName);
+        if (jsElement != null) {
+            return jsElement;
+        }
+        return element;
     }
 }

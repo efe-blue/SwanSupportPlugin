@@ -39,39 +39,33 @@
         <xml.tagNameProvider implementation="com.apkfuns.swan.tag.SwanTagNameProvider"/>
         <xml.elementDescriptorProvider implementation="com.apkfuns.swan.tag.SwanTagNameProvider"/>
         <xml.attributeDescriptorsProvider order="first" implementation="com.apkfuns.swan.attributes.SwanAttrDescriptorProvider"/>
+        <xml.xmlExtension implementation="com.apkfuns.swan.lang.SwanXmlExtension"/>
 
-        <completion.contributor language="XML" order="first,before xml,before liveTemplates"
+        <completion.contributor language="HTML" order="first,before xml,before liveTemplates"
                                 implementationClass="com.apkfuns.swan.completion.SwanCompletionContributor"/>
         <defaultLiveTemplatesProvider implementation="com.apkfuns.swan.template.SwanTemplatesProvider"/>
         <psi.referenceContributor implementation="com.apkfuns.swan.references.SwanReferenceContributor"/>
-<!--        <localInspection language="swan-xml" shortName="CheckTagEmptyBody" enabledByDefault="false" level="WARNING"-->
-<!--                         bundle="messages.XmlBundle" key="xml.inspections.check.tag.empty.body"-->
-<!--                         groupBundle="messages.XmlBundle" groupKey="xml.inspections.group.name"-->
-<!--                         implementationClass="com.intellij.xml.util.CheckTagEmptyBodyInspection"/>-->
-<!--        <localInspection language="swan-xml" shortName="XmlUnboundNsPrefix" enabledByDefault="false" level="WARNING"-->
-<!--                         bundle="messages.XmlBundle" key="xml.inspections.unbound.prefix"-->
-<!--                         groupBundle="messages.XmlBundle" groupKey="xml.inspections.group.name"-->
-<!--                         implementationClass="com.intellij.codeInsight.daemon.impl.analysis.XmlUnboundNsPrefixInspection"/>-->
-<!--        <localInspection language="swan-xml" shortName="HtmlUnknownTag" enabledByDefault="false" level="WARNING"-->
-<!--                         bundle="messages.XmlBundle" key="html.inspections.unknown.tag"-->
-<!--                         groupBundle="messages.XmlBundle" groupKey="html.inspections.group.name"-->
-<!--                         implementationClass="com.apkfuns.swan.inspection.SwanXmlUnboundNsPrefixInspection"/>-->
-<!--        <localInspection language="swan-xml" shortName="HtmlUnknownAttribute" enabledByDefault="false" level="WARNING"-->
-<!--                         bundle="messages.XmlBundle" key="html.inspections.unknown.attribute"-->
-<!--                         groupBundle="messages.XmlBundle" groupKey="html.inspections.group.name"-->
-<!--                         implementationClass="com.intellij.codeInspection.htmlInspections.HtmlUnknownAttributeInspection"/>-->
 
+        <localInspection language="HTML" shortName="HtmlUnknownAttribute" enabledByDefault="true" level="WARNING"
+                         bundle="messages.XmlBundle" key="html.inspections.unknown.attribute"
+                         groupBundle="messages.XmlBundle" groupKey="html.inspections.group.name"
+                         implementationClass="com.intellij.codeInspection.htmlInspections.HtmlUnknownAttributeInspection"/>
+
+        <xml.fileNSInfoProvider implementation="com.apkfuns.swan.inspection.SwanFileNSInfoProvider"/>
 
         <lang.smartEnterProcessor language="HTML" implementationClass="com.intellij.codeInsight.completion.XmlSmartEnterProcessor"/>
-        <lang.syntaxHighlighterFactory language="HTML" implementationClass="com.intellij.lang.xhtml.XhtmlSyntaxHighlighterFactory"/>
+        <lang.syntaxHighlighterFactory language="XML" implementationClass="com.intellij.lang.xml.XmlSyntaxHighlighterFactory"/>
 
-        <annotator language="XML" implementationClass="com.apkfuns.swan.annotator.SwanAnnotator"/>
+        <annotator language="HTML" implementationClass="com.apkfuns.swan.annotator.SwanAnnotator"/>
         <directoryProjectGenerator implementation="com.apkfuns.swan.wizard.SwanProjectGenerator"/>
         <typedHandler implementation="com.apkfuns.swan.utils.TypeHandleListener"/>
         <resolveScopeEnlarger implementation="com.apkfuns.swan.scope.SwanScopeEnlarger"/>
+        <codeInsight.lineMarkerProvider language="HTML" implementationClass="com.apkfuns.swan.marker.SwanFileLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="JavaScript" implementationClass="com.apkfuns.swan.marker.SwanJSLineMarkerProvider"/>
     </extensions>
     <extensions defaultExtensionNs="JavaScript">
         <predefinedLibraryProvider implementation="com.apkfuns.swan.scope.SwanJSPredefinedLibraryProvider"/>
+        <intentionAndInspectionFilter language="HTML" implementationClass="com.apkfuns.swan.inspection.SwanIntentionAndInspectionFilter"/>
     </extensions>
 
     <actions>

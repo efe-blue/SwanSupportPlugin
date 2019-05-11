@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 /**
- * 代码自动提醒
+ * 自动提醒对应JS文件的变量
  */
 public class SwanCompletionContributor extends CompletionContributor {
 
@@ -58,7 +58,7 @@ public class SwanCompletionContributor extends CompletionContributor {
                             .withInsertHandler((insertionContext, lookupElement) -> performInsert(value, insertionContext, lookupElement))
                             .withIcon(SwanIcon.ICON)
                             .withBoldness(true)
-                            .withTypeText("Var"));
+                            .withTypeText("Variable"));
                 }
             }
         }

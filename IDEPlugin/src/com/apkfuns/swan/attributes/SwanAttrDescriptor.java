@@ -3,6 +3,7 @@ package com.apkfuns.swan.attributes;
 import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.xml.XmlTag;
 import com.intellij.xml.impl.BasicXmlAttributeDescriptor;
 import com.intellij.xml.impl.XmlAttributeDescriptorEx;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,7 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
     @NotNull
     private final SwanAttribute swanAttribute;
 
-    public SwanAttrDescriptor(@NotNull SwanAttribute swanAttribute) {
+    public SwanAttrDescriptor(@NotNull SwanAttribute swanAttribute, @NotNull XmlTag xmlTag) {
         this.swanAttribute = swanAttribute;
     }
 

@@ -1,6 +1,6 @@
 package com.apkfuns.swan.tag;
 
-import com.apkfuns.swan.tag.SwanTag;
+import com.apkfuns.swan.utils.SwanFileUtil;
 import com.apkfuns.swan.utils.SwanIcon;
 import com.apkfuns.swan.utils.SwanTagManager;
 import com.intellij.codeInsight.completion.XmlTagInsertHandler;
@@ -19,6 +19,13 @@ public class SwanTagNameProvider implements XmlTagNameProvider, XmlElementDescri
     @Nullable
     @Override
     public XmlElementDescriptor getDescriptor(XmlTag xmlTag) {
+        if (!SwanFileUtil.isSwanFile(xmlTag)) {
+            return null;
+        }
+        SwanTag swanTag = SwanTagManager.getInstance().getTag(xmlTag.getName());
+        if (swanTag != null) {
+            return new SwanTagDescriptor(swanTag, xmlTag);
+        }
         return null;
     }
 

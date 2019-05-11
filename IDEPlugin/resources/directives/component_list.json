@@ -38,6 +38,13 @@
   },
   {
     "parent": [],
+    "tag": "checkbox-group",
+    "attrs": [],
+    "child": [],
+    "desc": "checkbox-group"
+  },
+  {
+    "parent": [],
     "tag": "scroll-view",
     "link": "https://smartprogram.baidu.com/docs/develop/component/view/#scroll-view/",
     "attrs": [
