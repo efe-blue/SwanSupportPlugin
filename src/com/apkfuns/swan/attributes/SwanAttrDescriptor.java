@@ -96,4 +96,10 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
     public Object[] getDependencies() {
         return new Object[0];
     }
+
+    @NotNull
+    @Override
+    public Object[] getDependences() {
+        return new Object[0];
+    }
 }

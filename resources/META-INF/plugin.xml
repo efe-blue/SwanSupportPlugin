@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.apkfuns.swan.plugin</id>
     <name>swan support</name>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
 
     <description><![CDATA[

@@ -131,4 +131,10 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
     public Object[] getDependencies() {
         return new Object[0];
     }
+
+    @NotNull
+    @Override
+    public Object[] getDependences() {
+        return new Object[0];
+    }
 }
