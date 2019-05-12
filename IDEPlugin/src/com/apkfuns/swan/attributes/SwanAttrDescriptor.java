@@ -43,7 +43,7 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
 
     @Override
     public boolean isEnumerated() {
-        return swanAttribute.getValueType() == ValueType.ENUM;
+        return swanAttribute.getValueType() == ValueType.ENUM || swanAttribute.getValueType() == ValueType.BOOLEAN;
     }
 
     @Override
@@ -73,6 +73,9 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
 
     @Override
     public String[] getEnumeratedValues() {
+        if (swanAttribute.getValueType() == ValueType.BOOLEAN) {
+            return new String[]{"true", "false"};
+        }
         String pattern = swanAttribute.getValuePattern();
         if (pattern != null) {
             return pattern.split("\\|");

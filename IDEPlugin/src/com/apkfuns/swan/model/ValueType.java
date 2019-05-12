@@ -6,12 +6,14 @@ import org.jetbrains.annotations.Nullable;
  * 数据类型
  */
 public enum ValueType {
-    MUSTACHE("mustache"),
-    NUMBER("number"),
-    BOOLEAN("boolean"),
-    ENUM("enum"),
-    FUNCTION("function"),
-    ANY("any");
+    NUMBER("Number"),
+    BOOLEAN("Boolean"),
+    STRING("String"),
+    ENUM("Enum"),
+    FUNCTION("EventHandle"),
+    ARRAY("Array"),
+    COLOR("Color"),
+    ANY("Any");
 
     // 值类型
     private String type;
@@ -27,7 +29,7 @@ public enum ValueType {
     public static ValueType convert(@Nullable String name) {
         if (name != null) {
             for (ValueType pattern : ValueType.values()) {
-                if (name.equals(pattern.getName())) {
+                if (name.equalsIgnoreCase(pattern.getName())) {
                     return pattern;
                 }
             }

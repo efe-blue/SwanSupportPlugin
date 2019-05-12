@@ -93,8 +93,6 @@ public class SwanAttribute {
      */
     public boolean match(@NotNull String value) {
         switch (valueType) {
-            case MUSTACHE:
-                return Pattern.compile("\\{\\{.*\\}\\}").matcher(value).matches();
             case NUMBER:
                 return Pattern.compile("[0-9]+([.][0-9]+)?$").matcher(value).matches();
             case BOOLEAN:

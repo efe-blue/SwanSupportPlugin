@@ -37,8 +37,22 @@ for component in component_tags:
             if j == 0:
                 attr_item['name'] = value.get_text()
             elif j == 1:
-                attr_item['valueType'] = value.get_text()
                 attr_item['valuePattern'] = None
+                type_text = value.get_text()
+                type_value = 'Any'
+                if "Number" == type_text or "Float" == type_text:
+                    type_value = 'Number'
+                elif "Boolean" == type_text:
+                    type_value = 'Boolean'
+                elif "String" == type_text:
+                    type_value = 'String'
+                elif "EventHandle" == type_text or "Event" == type_text or "Handle" == type_text:
+                    type_value = 'EventHandle'
+                elif "Color" == type_text:
+                    type_value = 'Color'
+                elif "Array" == type_text or "NumberArray" == type_text or "Array / String" == type_text:
+                    type_value = 'Array'
+                attr_item['valueType'] = type_value
             elif j == 2:
                 attr_item['defaultValue'] = value.get_text()
             elif j == 3:
@@ -49,6 +63,67 @@ for component in component_tags:
     print component_json
     print '----------------'
 print '已完成抓取{}个控件'.format(len(component_tags))
+# 官方未收录的组件
+un_contain = [
+    {
+        "tag": "block",
+        "desc": "block component",
+        "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+        "child": [],
+        "parent": [],
+        "attrs": []
+    },
+    {
+        "tag": "checkbox-group",
+        "desc": "checkbox-group component",
+        "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+        "child": ["checkbox"],
+        "parent": [],
+        "attrs": [
+            {
+                "defaultValue": "",
+                "valueType": "function",
+                "valuePattern": "",
+                "name": "bindchange",
+                "desc": "<checkbox-group/>中选中项发生改变时触发 change 事件"
+            }
+        ]
+    },
+    {
+        "tag": "radio-group",
+        "desc": "radio-group component",
+        "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+        "child": ["radio"],
+        "parent": [],
+        "attrs": [
+            {
+                "defaultValue": "",
+                "valueType": "function",
+                "valuePattern": "",
+                "name": "bindchange",
+                "desc": "<radio-group/>中选中项发生改变时触发 change 事件"
+            }
+        ]
+    },
+    {
+        "tag": "swiper-item",
+        "desc": "swiper-item component",
+        "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+        "child": [],
+        "parent": ["swiper"],
+        "attrs": [
+            {
+                "defaultValue": "",
+                "valueType": "string",
+                "valuePattern": "",
+                "name": "item-id",
+                "desc": "该swiper-item的标识符"
+            }
+        ]
+    }
+]
+output.extend(un_contain)
+
 # 写入到文件
 fo = open("component_list.json", "w")
 fo.write(json.dumps(output))

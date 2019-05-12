@@ -28,6 +28,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
 
+/**
+ * 标签内变量智能提醒
+ */
 public class SwanTagTextIntention extends PsiElementBaseIntentionAction {
     @Override
     public void invoke(@NotNull Project project, Editor editor, @NotNull PsiElement element) throws IncorrectOperationException {

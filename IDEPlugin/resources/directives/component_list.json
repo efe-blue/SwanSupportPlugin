@@ -6,14 +6,14 @@
     "attrs": [
       {
         "defaultValue": "none",
-        "valueType": "enum",
-        "valuePattern": "a|b|c|d",
+        "valueType": "String",
+        "valuePattern": null,
         "name": "hover-class",
         "desc": "\u6307\u5b9a\u6309\u4e0b\u53bb\u7684\u6837\u5f0f\u7c7b\u3002\u5f53  hover-class=\u201dnone\u201d  \u65f6\uff0c\u6ca1\u6709\u70b9\u51fb\u6001\u6548\u679c"
       },
       {
         "defaultValue": "false",
-        "valueType": "function",
+        "valueType": "Boolean",
         "valuePattern": null,
         "name": "hover-stop-propagation",
         "desc": "\u6307\u5b9a\u662f\u5426\u963b\u6b62\u672c\u8282\u70b9\u7684\u7956\u5148\u8282\u70b9\u51fa\u73b0\u70b9\u51fb\u6001"
@@ -35,13 +35,6 @@
     ],
     "child": [],
     "desc": "\u89c6\u56fe\u5bb9\u5668"
-  },
-  {
-    "parent": [],
-    "tag": "checkbox-group",
-    "attrs": [],
-    "child": [],
-    "desc": "checkbox-group"
   },
   {
     "parent": [],
@@ -260,6 +253,136 @@
     "desc": "movable-view \u7684\u53ef\u79fb\u52a8\u533a\u57df"
   },
   {
+    "parent": [
+      "movable-area"
+    ],
+    "tag": "movable-view",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/view/#movable-area/",
+    "attrs": [
+      {
+        "name": "direction",
+        "defaultValue": "false",
+        "valueType": "Enum",
+        "valuePattern": "all|vertical|horizontal|none",
+        "desc": ""
+      },
+      {
+        "name": "inertia",
+        "defaultValue": "false",
+        "valueType": "Boolean",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "out-of-bounds",
+        "defaultValue": "false",
+        "valueType": "Boolean",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "x",
+        "defaultValue": "",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "y",
+        "defaultValue": "",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "damping",
+        "defaultValue": "20",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "friction",
+        "defaultValue": "2",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "disabled",
+        "defaultValue": "false",
+        "valueType": "Boolean",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "scale",
+        "defaultValue": "false",
+        "valueType": "Boolean",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "scale-min",
+        "defaultValue": "",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "scale-max",
+        "defaultValue": "",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "scale-value",
+        "defaultValue": "",
+        "valueType": "Number",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "animation",
+        "defaultValue": "",
+        "valueType": "Boolean",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "bindchange",
+        "defaultValue": "",
+        "valueType": "EventHandle",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "bindscale",
+        "defaultValue": "",
+        "valueType": "EventHandle",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "htouchmove",
+        "defaultValue": "",
+        "valueType": "EventHandle",
+        "valuePattern": null,
+        "desc": ""
+      },
+      {
+        "name": "vtouchmove",
+        "defaultValue": "",
+        "valueType": "EventHandle",
+        "valuePattern": null,
+        "desc": ""
+      }
+    ],
+    "child": [],
+    "desc": "movable-view \u7684\u53ef\u79fb\u52a8\u533a\u57df"
+  },
+  {
     "parent": [],
     "tag": "cover-view",
     "link": "https://smartprogram.baidu.com/docs/develop/component/view/#cover-view/",
@@ -326,8 +449,8 @@
     "attrs": [
       {
         "defaultValue": "-",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "success|info|warn|waiting|success_no_circle|clear|search|personal|setting|top|close|cancel|download|checkboxSelected|radioSelected|radioUnselect",
         "name": "type",
         "desc": "\u751f\u6548\u7684\u503c\uff1asuccess, info, warn, waiting, success_no_circle, clear, search, personal, setting, top, close, cancel, download, checkboxSelected, radioSelected, radioUnselect"
       },
@@ -356,8 +479,8 @@
     "attrs": [
       {
         "defaultValue": "false",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "ensp|emsp|nbsp",
         "name": "space",
         "desc": "\u663e\u793a\u8fde\u7eed\u7a7a\u683c"
       },
@@ -379,10 +502,10 @@
     "attrs": [
       {
         "defaultValue": "[]",
-        "valueType": "Array / String",
+        "valueType": "Array",
         "valuePattern": null,
         "name": "nodes",
-        "desc": "\u8282\u70b9\u5217\u8868 / HTML String"
+        "desc": "\u8282\u70b9\u5217\u8868 / HTML String\u3002"
       }
     ],
     "child": [],
@@ -395,7 +518,7 @@
     "attrs": [
       {
         "defaultValue": "\u65e0",
-        "valueType": "Float",
+        "valueType": "Number",
         "valuePattern": null,
         "name": "percent",
         "desc": "\u767e\u5206\u6bd4 0~100"
@@ -444,8 +567,8 @@
       },
       {
         "defaultValue": "backwards",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "backwards|forwards",
         "name": "active-mode",
         "desc": "backwards: \u52a8\u753b\u4ece\u5934\u64ad\uff1bforwards\uff1a\u52a8\u753b\u4ece\u4e0a\u6b21\u7ed3\u675f\u70b9\u63a5\u7740\u64ad"
       }
@@ -481,8 +604,8 @@
       },
       {
         "defaultValue": "\u5426",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "play|pause|stop",
         "name": "action",
         "desc": "play"
       },
@@ -511,15 +634,15 @@
     "attrs": [
       {
         "defaultValue": "default",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "default|mini",
         "name": "size",
         "desc": "\u5927\u5c0f"
       },
       {
         "defaultValue": "default",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "primary|default|warn",
         "name": "type",
         "desc": "\u7c7b\u578b"
       },
@@ -539,8 +662,8 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "contact|share|getUserInfo|getPhoneNumber|openSetting",
         "name": "open-type",
         "desc": "\u767e\u5ea6 App\u5f00\u653e\u80fd\u529b\uff0c\u6bd4\u5982\u5206\u4eab\u3001\u83b7\u53d6\u7528\u6237\u4fe1\u606f\u7b49\u7b49\u3002"
       },
@@ -549,7 +672,7 @@
         "valueType": "String",
         "valuePattern": null,
         "name": "hover-class",
-        "desc": "\u70b9\u51fb\u6001\u3002\u6307\u5b9a\u6309\u94ae\u6309\u4e0b\u53bb\u7684\u6837\u5f0f\u7c7b\u3002\u5f53  hover-class=\u201dnone\u201d  \u65f6\uff0c\u6ca1\u6709\u70b9\u51fb\u6001\u6548\u679c\u3002 button-hover \u9ed8\u8ba4\u4e3a{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}\u3002"
+        "desc": "\u70b9\u51fb\u6001\u3002\u6307\u5b9a\u6309\u94ae\u6309\u4e0b\u53bb\u7684\u6837\u5f0f\u7c7b\u3002\u5f53 hover-class=\"none\"  \u65f6\uff0c\u6ca1\u6709\u70b9\u51fb\u6001\u6548\u679c\u3002 button-hover \u9ed8\u8ba4\u4e3a{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}\u3002"
       },
       {
         "defaultValue": "false",
@@ -574,10 +697,10 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "Handler",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "bindgetuserinfo",
-        "desc": "\u7528\u6237\u70b9\u51fb\u8be5\u6309\u94ae\u65f6\uff0c\u4f1a\u8fd4\u56de\u83b7\u53d6\u5230\u7684\u7528\u6237\u4fe1\u606f\uff0c\u4ece\u8fd4\u56de\u53c2\u6570\u7684 detail \u4e2d\u83b7\u53d6\u5230\u7684\u503c\uff0c\u548c swan.getUserInfo \u4e00\u6837\u7684\u3002\u548c open-type \u642d\u914d\u4f7f\u7528\uff0c \u4f7f\u7528\u65f6\u673a\uff1a open-type=\u201dgetUserInfo\u201d\u3002"
+        "desc": "\u7528\u6237\u70b9\u51fb\u8be5\u6309\u94ae\u65f6\uff0c\u4f1a\u8fd4\u56de\u83b7\u53d6\u5230\u7684\u7528\u6237\u4fe1\u606f\uff0c\u4ece\u8fd4\u56de\u53c2\u6570\u7684 detail \u4e2d\u83b7\u53d6\u5230\u7684\u503c\uff0c\u548c swan.getUserInfo \u4e00\u6837\u7684\u3002\u548c open-type \u642d\u914d\u4f7f\u7528\uff0c \u4f7f\u7528\u65f6\u673a\uff1a open-type=\"getUserInfo\"\u3002"
       },
       {
         "defaultValue": "false",
@@ -595,14 +718,14 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "Handler",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "bindgetphonenumber",
-        "desc": "\u83b7\u53d6\u7528\u6237\u624b\u673a\u53f7\u56de\u8c03\u3002\u548c open-type \u642d\u914d\u4f7f\u7528\uff0c \u4f7f\u7528\u65f6\u673a\uff1a open-type=\u201dgetPhoneNumber\u201d\u3002\u5177\u4f53\u7533\u8bf7\u65b9\u6cd5\u8bf7\u89c1\uff1a\u83b7\u53d6\u7528\u6237\u624b\u673a\u53f7\u6743\u9650\u7533\u8bf7\u3002"
+        "desc": "\u83b7\u53d6\u7528\u6237\u624b\u673a\u53f7\u56de\u8c03\u3002\u548c open-type \u642d\u914d\u4f7f\u7528\uff0c \u4f7f\u7528\u65f6\u673a\uff1aopen-type=\"getPhoneNumber\"\u3002\u5177\u4f53\u7533\u8bf7\u65b9\u6cd5\u8bf7\u89c1\uff1a\u83b7\u53d6\u7528\u6237\u624b\u673a\u53f7\u6743\u9650\u7533\u8bf7\u3002"
       },
       {
         "defaultValue": "-",
-        "valueType": "Handler",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "bindopensetting",
         "desc": "\u5728\u6253\u5f00\u6388\u6743\u8bbe\u7f6e\u9875\u540e\u56de\u8c03\uff0c\u4f7f\u7528\u65f6\u673a\uff1aopen-type=\"openSetting\"\u3002"
@@ -651,7 +774,7 @@
   {
     "parent": [],
     "tag": "form",
-    "link": "hhttps://smartprogram.baidu.com/docs/develop/component/formlist/#form/",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/formlist/#form/",
     "attrs": [
       {
         "defaultValue": "\u643a\u5e26 form \u4e2d\u7684\u6570\u636e\u89e6\u53d1 submit \u4e8b\u4ef6\uff0cevent.detail = {value : {'name': 'value'}}",
@@ -1244,8 +1367,8 @@
       },
       {
         "defaultValue": "navigate",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "navigate|redirect|switchTab|navigateBack|reLaunch|exit",
         "name": "open-type",
         "desc": "\u8df3\u8f6c\u65b9\u5f0f"
       },
@@ -1272,14 +1395,14 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "Object",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "extra-data",
         "desc": "\u5f53target=\u201dminiProgram\u201d\u65f6\u6709\u6548\uff0c\u9700\u8981\u4f20\u9012\u7ed9\u76ee\u6807\u5c0f\u7a0b\u5e8f\u7684\u6570\u636e\uff0c\u76ee\u6807\u5c0f\u7a0b\u5e8f\u53ef\u5728 App.onLaunch()\uff0cApp.onShow() \u4e2d\u83b7\u53d6\u5230\u8fd9\u4efd\u6570\u636e\u3002\u8be6\u60c5"
       },
       {
         "defaultValue": "release",
-        "valueType": "version",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "version",
         "desc": "\u5f53target=\u201dminiProgram\u201d\u65f6\u6709\u6548\uff0c\u8981\u6253\u5f00\u7684\u5c0f\u7a0b\u5e8f\u7248\u672c\uff0c\u6709\u6548\u503c develop\uff08\u5f00\u53d1\u7248\uff09\uff0ctrial\uff08\u4f53\u9a8c\u7248\uff09\uff0crelease\uff08\u6b63\u5f0f\u7248\uff09\uff0c\u4ec5\u5728\u5f53\u524d\u5c0f\u7a0b\u5e8f\u4e3a\u5f00\u53d1\u7248\u6216\u4f53\u9a8c\u7248\u65f6\u6b64\u53c2\u6570\u6709\u6548\uff1b\u5982\u679c\u5f53\u524d\u5c0f\u7a0b\u5e8f\u662f\u6b63\u5f0f\u7248\uff0c\u5219\u6253\u5f00\u7684\u5c0f\u7a0b\u5e8f\u5fc5\u5b9a\u662f\u6b63\u5f0f\u7248\u3002"
@@ -1444,8 +1567,8 @@
       },
       {
         "defaultValue": "scaleToFill",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "scaleToFill|aspectFit|aspectFill|widthFix|top|bottom|center|left|right|top left|top right|bottom left|bottom right",
         "name": "mode",
         "desc": "\u56fe\u7247\u88c1\u526a\u3001\u7f29\u653e\u7684\u6a21\u5f0f"
       },
@@ -1458,14 +1581,14 @@
       },
       {
         "defaultValue": "",
-        "valueType": "HandleEvent",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "binderror",
         "desc": "\u5f53\u9519\u8bef\u53d1\u751f\u65f6\uff0c\u53d1\u5e03\u5230 AppService \u7684\u4e8b\u4ef6\u540d\uff0c\u4e8b\u4ef6\u5bf9\u8c61 event.detail = {errMsg: \u2018something wrong\u2019}"
       },
       {
         "defaultValue": "",
-        "valueType": "HandleEvent",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "bindload",
         "desc": "\u5f53\u56fe\u7247\u8f7d\u5165\u5b8c\u6bd5\u65f6\uff0c\u53d1\u5e03\u5230 AppService \u7684\u4e8b\u4ef6\u540d\uff0c\u4e8b\u4ef6\u5bf9\u8c61 event.detail = {height:\u2019\u56fe\u7247\u9ad8\u5ea6px\u2019, width:\u2019\u56fe\u7247\u5bbd\u5ea6px\u2019}"
@@ -1480,21 +1603,21 @@
     "link": "https://smartprogram.baidu.com/docs/develop/component/media/#video/",
     "attrs": [
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "String",
         "valuePattern": null,
         "name": "src",
         "desc": "\u89c6\u9891\u7684\u8d44\u6e90\u5730\u5740"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "Number",
         "valuePattern": null,
         "name": "initial-time",
         "desc": "\u6307\u5b9a\u89c6\u9891\u521d\u59cb\u64ad\u653e\u4f4d\u7f6e"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "Number",
         "valuePattern": null,
         "name": "duration",
@@ -1572,7 +1695,7 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "Array.<object>",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "danmu-list",
         "desc": "\u5f39\u5e55\u5217\u8868"
@@ -1606,28 +1729,35 @@
         "desc": "\u662f\u5426\u663e\u793a\u89c6\u9891\u4e2d\u95f4\u7684\u64ad\u653e\u6309\u94ae"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
+        "valueType": "EventHandle",
+        "valuePattern": null,
+        "name": "bindplay",
+        "desc": "\u5f53\u5f00\u59cb\u64ad\u653e\u65f6\u89e6\u53d1 play \u4e8b\u4ef6"
+      },
+      {
+        "defaultValue": "-",
         "valueType": "EventHandle",
         "valuePattern": null,
         "name": "bindpause",
         "desc": "\u5f53\u6682\u505c\u64ad\u653e\u65f6\u89e6\u53d1 pause \u4e8b\u4ef6"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "EventHandle",
         "valuePattern": null,
         "name": "bindended",
         "desc": "\u5f53\u64ad\u653e\u5230\u672b\u5c3e\u65f6\u89e6\u53d1 ended \u4e8b\u4ef6"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "EventHandle",
         "valuePattern": null,
         "name": "bindtimeupdate",
         "desc": "\u64ad\u653e\u8fdb\u5ea6\u53d8\u5316\u65f6\u89e6\u53d1\uff0cevent.detail = {currentTime, duration} \u3002"
       },
       {
-        "defaultValue": "",
+        "defaultValue": "-",
         "valueType": "EventHandle",
         "valuePattern": null,
         "name": "bindfullscreenchange",
@@ -1658,15 +1788,15 @@
     "attrs": [
       {
         "defaultValue": "back",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "front|back",
         "name": "device-position",
         "desc": "\u524d\u7f6e\u6216\u540e\u7f6e\uff0c\u503c\u4e3afront, back"
       },
       {
         "defaultValue": "auto",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "auto|on|off",
         "name": "flash",
         "desc": "\u95ea\u5149\u706f\uff0c\u503c\u4e3aauto, on, off"
       },
@@ -1745,9 +1875,64 @@
     "link": "https://smartprogram.baidu.com/docs/develop/component/media/#live-player/",
     "attrs": [
       {
-        "valueType": "\u76f4\u64ad\u3001\u76f4\u64ad\u7b54\u9898",
-        "valuePattern": null,
-        "name": "\u5a31\u4e50"
+        "name": "id",
+        "valueType": "String",
+        "valuePattern": null
+      },
+      {
+        "name": "src",
+        "valueType": "String",
+        "valuePattern": null
+      },
+      {
+        "name": "autoplay",
+        "valueType": "Boolean",
+        "valuePattern": null
+      },
+      {
+        "name": "muted",
+        "valueType": "Boolean",
+        "valuePattern": null
+      },
+      {
+        "name": "orientation",
+        "valueType": "Enum",
+        "valuePattern": "vertical|horizontal"
+      },
+      {
+        "name": "object-fit",
+        "valueType": "Enum",
+        "valuePattern": "contain|fillCrop"
+      },
+      {
+        "name": "background-mute",
+        "valueType": "Boolean",
+        "valuePattern": ""
+      },
+      {
+        "name": "min-cache",
+        "valueType": "Number",
+        "valuePattern": ""
+      },
+      {
+        "name": "max-cache",
+        "valueType": "Number",
+        "valuePattern": ""
+      },
+      {
+        "name": "bindstatechange",
+        "valueType": "EventHandle",
+        "valuePattern": ""
+      },
+      {
+        "name": "bindnetstatus",
+        "valueType": "EventHandle",
+        "valuePattern": ""
+      },
+      {
+        "name": "bindfullscreenchange",
+        "valueType": "EventHandle",
+        "valuePattern": ""
       }
     ],
     "child": [],
@@ -1988,8 +2173,8 @@
     "attrs": [
       {
         "defaultValue": "",
-        "valueType": "String",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "userNickName|userAvatarUrl|userGender",
         "name": "type",
         "desc": "\u5f00\u653e\u6570\u636e\u7c7b\u578b"
       }
@@ -2011,7 +2196,7 @@
       },
       {
         "defaultValue": "-",
-        "valueType": "EventHandler",
+        "valueType": "Any",
         "valuePattern": null,
         "name": "bindmessage",
         "desc": "\u7f51\u9875\u5411\u5c0f\u7a0b\u5e8f postMessage \u65f6\uff0c\u4f1a\u5728\u7279\u5b9a\u65f6\u673a\uff08\u5c0f\u7a0b\u5e8f\u540e\u9000\u3001\u7ec4\u4ef6\u9500\u6bc1\u3001\u5206\u4eab\uff09\u89e6\u53d1\u5e76\u6536\u5230\u6d88\u606f\u3002e.detail = { data }"
@@ -2027,27 +2212,89 @@
     "attrs": [
       {
         "defaultValue": "none",
-        "valueType": "string",
+        "valueType": "String",
         "valuePattern": null,
         "name": "appid",
         "desc": "\u5c0f\u7a0b\u5e8f\u5e94\u7528 ID"
       },
       {
         "defaultValue": "none",
-        "valueType": "string",
+        "valueType": "String",
         "valuePattern": null,
         "name": "apid",
         "desc": "\u5c0f\u7a0b\u5e8f\u5e7f\u544a\u4f4d ID"
       },
       {
         "defaultValue": "none",
-        "valueType": "string",
-        "valuePattern": null,
+        "valueType": "Enum",
+        "valuePattern": "banner|feed",
         "name": "type",
         "desc": "\u5e7f\u544a\u7c7b\u578b\uff1abanner/feed \uff0c\u9700\u548c\u767e\u9752\u85e4\u5e73\u53f0\u4e0a\u7684\u4ee3\u7801\u4f4d\u7c7b\u578b\u76f8\u5339\u914d\u3002"
       }
     ],
     "child": [],
     "desc": "\u5e7f\u544a\u7ec4\u4ef6"
+  },
+  {
+    "parent": [],
+    "tag": "block",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+    "attrs": [],
+    "child": [],
+    "desc": "block component"
+  },
+  {
+    "parent": [],
+    "tag": "checkbox-group",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+    "attrs": [
+      {
+        "defaultValue": "",
+        "valuePattern": "",
+        "valueType": "function",
+        "desc": "<checkbox-group/>\u4e2d\u9009\u4e2d\u9879\u53d1\u751f\u6539\u53d8\u65f6\u89e6\u53d1 change \u4e8b\u4ef6",
+        "name": "bindchange"
+      }
+    ],
+    "child": [
+      "checkbox"
+    ],
+    "desc": "checkbox-group component"
+  },
+  {
+    "parent": [],
+    "tag": "radio-group",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+    "attrs": [
+      {
+        "defaultValue": "",
+        "valuePattern": "",
+        "valueType": "function",
+        "desc": "<radio-group/>\u4e2d\u9009\u4e2d\u9879\u53d1\u751f\u6539\u53d8\u65f6\u89e6\u53d1 change \u4e8b\u4ef6",
+        "name": "bindchange"
+      }
+    ],
+    "child": [
+      "radio"
+    ],
+    "desc": "radio-group component"
+  },
+  {
+    "parent": [
+      "swiper"
+    ],
+    "tag": "swiper-item",
+    "link": "https://smartprogram.baidu.com/docs/develop/component/list/",
+    "attrs": [
+      {
+        "defaultValue": "",
+        "valuePattern": "",
+        "valueType": "string",
+        "desc": "\u8be5swiper-item\u7684\u6807\u8bc6\u7b26",
+        "name": "item-id"
+      }
+    ],
+    "child": [],
+    "desc": "swiper-item component"
   }
 ]
