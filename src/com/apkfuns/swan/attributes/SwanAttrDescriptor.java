@@ -90,4 +90,10 @@ public class SwanAttrDescriptor extends BasicXmlAttributeDescriptor implements X
         }
         return getName().equals(((SwanAttrDescriptor) obj).getName());
     }
+
+    @NotNull
+    @Override
+    public Object[] getDependencies() {
+        return new Object[0];
+    }
 }

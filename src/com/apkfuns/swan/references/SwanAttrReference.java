@@ -38,4 +38,10 @@ public class SwanAttrReference extends PsiReferenceBase<PsiElement> {
         }
         return element;
     }
+
+    @NotNull
+    @Override
+    public Object[] getVariants() {
+        return new Object[0];
+    }
 }

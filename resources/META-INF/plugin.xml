@@ -1,13 +1,14 @@
 <idea-plugin>
     <id>com.apkfuns.swan.plugin</id>
     <name>swan support</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
 
     <description><![CDATA[
       Swan Language support for WebStorm.<br><br>
       <b>Features:</b> <br>
       <ul>
+      <li>支持智能小程序项目创建</li>
       <li>支持智能小程序组件和属性智能提醒和内容校验</li>
       <li>支持智能小程序方法和参数提醒</li>
       <li>支持swan文件和JS文件互相切换和变量和方法智能提取</li>
@@ -58,7 +59,6 @@
         <xml.fileNSInfoProvider implementation="com.apkfuns.swan.inspection.SwanFileNSInfoProvider"/>
 
         <lang.smartEnterProcessor language="HTML" implementationClass="com.intellij.codeInsight.completion.XmlSmartEnterProcessor"/>
-        <lang.syntaxHighlighterFactory language="XML" implementationClass="com.intellij.lang.xml.XmlSyntaxHighlighterFactory"/>
 
         <annotator language="HTML" implementationClass="com.apkfuns.swan.annotator.SwanAnnotator"/>
         <directoryProjectGenerator implementation="com.apkfuns.swan.wizard.SwanProjectGenerator"/>

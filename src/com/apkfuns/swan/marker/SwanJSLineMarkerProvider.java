@@ -2,6 +2,7 @@ package com.apkfuns.swan.marker;
 
 import com.apkfuns.swan.utils.SwanFileUtil;
 import com.apkfuns.swan.utils.SwanIcon;
+import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
@@ -16,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.event.MouseEvent;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * js文件跳swan文件
@@ -36,6 +39,11 @@ public class SwanJSLineMarkerProvider implements LineMarkerProvider, GutterIconN
     }
 
     @Override
+    public void collectSlowLineMarkers(@NotNull List<PsiElement> elements, @NotNull Collection<LineMarkerInfo> result) {
+
+    }
+
+    @Override
     public @Nullable LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement psiElement) {
         PsiFile psiFile = psiElement.getContainingFile();
         if (!(psiFile instanceof JSFile)) {
@@ -47,7 +55,7 @@ public class SwanJSLineMarkerProvider implements LineMarkerProvider, GutterIconN
             if (swanFile == null) {
                 return null;
             }
-            return new LineMarkerInfo<>(page, page.getTextRange(), SwanIcon.ICON, null, this,
+            return new LineMarkerInfo<>(page, page.getTextRange(), SwanIcon.ICON, Pass.LINE_MARKERS, null, this,
                     GutterIconRenderer.Alignment.LEFT);
         }
         return null;

@@ -125,4 +125,10 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
     public void init(PsiElement psiElement) {
 
     }
+
+    @NotNull
+    @Override
+    public Object[] getDependencies() {
+        return new Object[0];
+    }
 }
