@@ -8,10 +8,10 @@
       Swan Language support for WebStorm.<br><br>
       <b>Features:</b> <br>
       <ul>
-      <li>支持小程序组件和属性提醒</li>
-      <li>支持小程序方法和参数提醒</li>
-      <li>支持swan文件和JS文件互相跳转</li>
-      <li>更多智能提示欢迎体验</li>
+      <li>支持智能小程序组件和属性智能提醒和内容校验</li>
+      <li>支持智能小程序方法和参数提醒</li>
+      <li>支持swan文件和JS文件互相切换和变量和方法智能提取</li>
+      <li>更多强大的功能欢迎下载体验~</li>
       </ul><br>
     ]]></description>
 
