@@ -5,13 +5,22 @@
     <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Swan Language support for WebStorm.<br><br>
+      <b>Features:</b> <br>
+      <ul>
+      <li>支持小程序组件和属性提醒</li>
+      <li>支持小程序方法和参数提醒</li>
+      <li>支持swan文件和JS文件互相跳转</li>
+      <li>更多智能提示欢迎体验</li>
+      </ul><br>
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      <ul>
+      <li><b>1.0.2:</b>
+        <br> 智能小程序支持插件发布.
+      </li>
+      </ul>
     ]]>
     </change-notes>
 
