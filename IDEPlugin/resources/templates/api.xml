@@ -1,584 +1,1821 @@
-<templateSet group="wechatCode">
-    <template name="swan.startRecode" value="swan.startRecord({&#10;  success:res=&gt;{&#10;  &#10;  },&#10;  fail:res=&gt;{&#10;  &#10;  }&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.request" value="swan.request({&#10;    url:&quot;$offset$&quot;,&#10;    success:res=&gt;{&#10;        &#10;    }&#10;})" description="������������ HTTPS ������������������������������������������������5������������������������" toReformat="false" toShortenFQNames="true">
+<?xml version="1.0" encoding="utf-8"?>
+<templateSet group="SwanGroup">
+    <template description="发起网络请求" name="request" toReformat="false" toShortenFQNames="true" value="swan.request({&#10;    url: &quot;$offset$&quot;,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.uploadFile" value="swan.uploadFile({&#10;    url: '$offset$', &#10;    filePath: '',&#10;    name: '', &#10;    success:res=&gt;{ &#10;    &#10;    }&#10;})" description="������������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 content-type 为 multipart/form-data 如页面通过 swan.chooseImage 等接口获取到一个本地资源的临时文件路径后，可通过此接口将本地资源上传到指定服务器。" name="uploadFile" toReformat="false" toShortenFQNames="true" value="swan.uploadFile({&#10;    url: null,&#10;    filePath: null,&#10;    name: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。" name="downloadFile" toReformat="false" toShortenFQNames="true" value="swan.downloadFile({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个 WebSocket 连接。" name="connectSocket" toReformat="false" toShortenFQNames="true" value="swan.connectSocket({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="监听 WebSocket 连接打开事件。" name="onSocketOpen" toReformat="false" toShortenFQNames="true" value="swan.onSocketOpen({&#10;    header: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="监听 WebSocket 错误" name="onSocketError" toReformat="false" toShortenFQNames="true" value="swan.onSocketError({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="通过 WebSocket 连接发送数据，需要先调用 swan.connectSocket，并在 swan.onSocketOpen 回调之后才能发送。" name="sendSocketMessage" toReformat="false" toShortenFQNames="true" value="swan.sendSocketMessage({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="监听 WebSocket 接受到服务器的消息事件。" name="onSocketMessage" toReformat="false" toShortenFQNames="true" value="swan.onSocketMessage({&#10;    data: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="关闭 WebSocket 连接，须在 WebSocket 打开期间调用 swan.closeSocket 才能关闭。" name="closeSocket" toReformat="false" toShortenFQNames="true" value="swan.closeSocket({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="监听 WebSocket 关闭。" name="onSocketClose" toReformat="false" toShortenFQNames="true" value="swan.onSocketClose({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="WebSocket 任务，可通过 swan.connectSocket() 接口创建返回。" name="tTask" toReformat="false" toShortenFQNames="true" value="SocketTask({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用户向服务请求识别身份证，身份证识别包括正面和背面。" name="ai.ocrIdCard" toReformat="false" toShortenFQNames="true" value="swan.ai.ocrIdCard({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="识别银行卡并返回卡号、发卡行和卡片类型。" name="ai.ocrBankCard" toReformat="false" toShortenFQNames="true" value="swan.ai.ocrBankCard({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对机动车驾驶证所有关键字段进行识别。" name="ai.ocrDrivingLicense" toReformat="false" toShortenFQNames="true" value="swan.ai.ocrDrivingLicense({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对机动车行驶证正本所有关键字段进行识别。" name="ai.ocrVehicleLicense" toReformat="false" toShortenFQNames="true" value="swan.ai.ocrVehicleLicense({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="运用业界领先的深度学习技术，判断一段文本内容是否符合网络发文规范，实现自动化、智能化的文本审核。" name="ai.textReview" toReformat="false" toShortenFQNames="true" value="swan.ai.textReview({&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将文本转换为可以播放的 mp3 文件。" name="ai.textToAudio" toReformat="false" toShortenFQNames="true" value="swan.ai.textToAudio({&#10;    tex: null,&#10;    ctp: null,&#10;    lan: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="自定义图像审核。" name="ai.imageAudit" toReformat="false" toShortenFQNames="true" value="swan.ai.imageAudit({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="通用物体及场景识别，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的多个物体及场景标签。" name="ai.advancedGeneralIdentify" toReformat="false" toShortenFQNames="true" value="swan.ai.advancedGeneralIdentify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用户向服务请求检测图像中的主体位置。" name=".ai.objectDetectIdentify" toReformat="false" toShortenFQNames="true" value=" swan.ai.objectDetectIdentify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用于检测一张车辆图片的具体车型，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片的车辆品牌及型号、颜色及年份、位置信息。" name="ai.carClassify" toReformat="false" toShortenFQNames="true" value="swan.ai.carClassify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用于菜品识别，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片的菜品名称、卡路里信息、置信度。" name="ai.dishClassify" toReformat="false" toShortenFQNames="true" value="swan.ai.dishClassify({&#10;    image: null,&#10;    filter_threshold: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用于检测和识别图片中的品牌 LOGO 信息。即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中 LOGO 的名称、位置和置信度。 当效果欠佳时，可以建立子库（在控制台创建应用并申请建库）并通过调用 logo 入口接口完成自定义 logo 入库，提高识别效果。" name="ai.logoClassify" toReformat="false" toShortenFQNames="true" value="swan.ai.logoClassify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="该请求用于识别一张图片，即对于输入的一张图片（可正常解码，且长宽比较合适），输出动物识别结果。" name="ai.animalClassify" toReformat="false" toShortenFQNames="true" value="swan.ai.animalClassify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="该请求用于识别一张图片，即对于输入的一张图片（可正常解码，且长宽比较合适），输出植物识别结果。" name="ai.plantClassify" toReformat="false" toShortenFQNames="true" value="swan.ai.plantClassify({&#10;    image: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取全局唯一的语音识别器voiceRecognizer。" name="ai.getVoiceRecognizer" toReformat="false" toShortenFQNames="true" value="swan.ai.getVoiceRecognizer({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="人脸检测，检测图片中的人脸并标记出相应的信息位置，同时可以展示出人脸的关键信息和属性信息，比如年龄，性别等。" name="ai.faceDetect" toReformat="false" toShortenFQNames="true" value="swan.ai.faceDetect({&#10;    image: null,&#10;    image_type: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="人脸对比，支持两张人脸图片的相似度对比，图片类型可以为：生活照，证件照，身份证芯片照或者带网纹照。" name="ai.faceMatch" toReformat="false" toShortenFQNames="true" value="swan.ai.faceMatch({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="人脸搜索，传入人脸图片，支持在指定人脸图片集合中，找到与传入图片中人脸最为相似的图片。" name="ai.faceSearch" toReformat="false" toShortenFQNames="true" value="swan.ai.faceSearch({&#10;    image: null,&#10;    image_type: null,&#10;    group_id_list: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="公安验证，基于姓名和身份证号，调取公民身份证小图（源自公安系统），将当前获取的人脸图片，与此证件小图进行对比，得出比对分数。" name="ai.facePersonVerify" toReformat="false" toShortenFQNames="true" value="swan.ai.facePersonVerify({&#10;    image: null,&#10;    image_type: null,&#10;    id_card_number: null,&#10;    name: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="身份证和名字对比，验证用户输入的身份证号码和姓名是否匹配，用于判断用户信息是否真实。" name="ai.facePersonIdmatch" toReformat="false" toShortenFQNames="true" value="swan.ai.facePersonIdmatch({&#10;    id_card_number: null,&#10;    name: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在线活体检测，基于单张图片，判断图片中的人脸是否为二次翻拍。" name="ai.faceVerify" toReformat="false" toShortenFQNames="true" value="swan.ai.faceVerify({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="H5活体检测-语音校验码，为防止用户提交非当前操作的视频，在录制视频时，随机分配一个数字，用户需要读出这个数字，在后续识别时校验，以判断视频是否为现场录制。" name="ai.faceLivenessSessioncode" toReformat="false" toShortenFQNames="true" value="swan.ai.faceLivenessSessioncode({&#10;    appid: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="H5活体检测-视频活体检测，录制并上传的视频，会在云端进行随机抽帧分析，并得出最终的活体检测分数。" name="ai.faceLivenessVerify" toReformat="false" toShortenFQNames="true" value="swan.ai.faceLivenessVerify({&#10;    video_base64: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="词法分析，提供分词、词性标注、专名识别三大功能。" name="ai.nlpLexerCustom" toReformat="false" toShortenFQNames="true" value="swan.ai.nlpLexerCustom({&#10;    text: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="从本地相册选择图片或使用相机拍照。" name="chooseImage" toReformat="false" toShortenFQNames="true" value="swan.chooseImage({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="预览图片" name="previewImage" toReformat="false" toShortenFQNames="true" value="swan.previewImage({&#10;    urls: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取图片信息" name="getImageInfo" toReformat="false" toShortenFQNames="true" value="swan.getImageInfo({&#10;    src: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="保存图片到系统相册，需要用户授权。" name="saveImageToPhotosAlbum" toReformat="false" toShortenFQNames="true" value="swan.saveImageToPhotosAlbum({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取全局唯一的录音管理器recorderManager。" name="getRecorderManager" toReformat="false" toShortenFQNames="true" value="swan.getRecorderManager({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取全局唯一的背景音频管理器 backgroundAudioManager。" name="getBackgroundAudioManager" toReformat="false" toShortenFQNames="true" value="swan.getBackgroundAudioManager({&#10;    duration: null,&#10;    currentTime: null,&#10;    paused: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建并返回内部 audio 上下文 innerAudioContext 对象。" name="createInnerAudioContext" toReformat="false" toShortenFQNames="true" value="swan.createInnerAudioContext({&#10;    duration: null,&#10;    currentTime: null,&#10;    paused: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对innerAudioContext进行小程序内部的全局设置。" name="setInnerAudioOption" toReformat="false" toShortenFQNames="true" value="swan.setInnerAudioOption({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="拍摄视频或从手机相册中选视频，返回视频的临时文件路径。" name="chooseVideo" toReformat="false" toShortenFQNames="true" value="swan.chooseVideo({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="保存视频到系统相册。需要用户授权。" name="saveVideoToPhotosAlbum" toReformat="false" toShortenFQNames="true" value="swan.saveVideoToPhotosAlbum({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建并返回 video 上下文 videoContext 对象。通过 videoId 跟一个 video 组件绑定，通过它可以操作一个 video 组件。" name="createVideoContext" toReformat="false" toShortenFQNames="true" value="swan.createVideoContext({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="createLivePlayerContext" toReformat="false" toShortenFQNames="true" value="swan.createLivePlayerContext({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建并返回 camera 上下文 cameraContext对象，cameraContext 与页面的 camera 组件绑定，一个页面只能有一个 camera，通过它可以操作对应的组件。" name="createCameraContext" toReformat="false" toShortenFQNames="true" value="swan.createCameraContext({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建并返回 ar-camera 上下文 ARCameraContext对象，ARCameraContext 与页面的 ar-camera 组件绑定，一个页面只能有一个 ar-camera，通过它可以操作对应的组件。" name="createARCameraContext" toReformat="false" toShortenFQNames="true" value="swan.createARCameraContext({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="保存文件到本地" name="saveFile" toReformat="false" toShortenFQNames="true" value="swan.saveFile({&#10;    tempFilePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取文件信息" name="getFileInfo" toReformat="false" toShortenFQNames="true" value="swan.getFileInfo({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取本地已保存的文件列表" name="getSavedFileList" toReformat="false" toShortenFQNames="true" value="swan.getSavedFileList({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 getFileInfo 接口。" name="getSavedFileInfo" toReformat="false" toShortenFQNames="true" value="swan.getSavedFileInfo({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="删除本地存储的文件" name="removeSavedFile" toReformat="false" toShortenFQNames="true" value="swan.removeSavedFile({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="新开页面打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx（只支持 Android ）。" name="openDocument" toReformat="false" toShortenFQNames="true" value="swan.openDocument({&#10;    filePath: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将数据存储在本地缓存指定的 key 中。如果之前存在同名 key ，会覆盖掉原来该 key 对应的内容。这是一个异步接口。" name="setStorage" toReformat="false" toShortenFQNames="true" value="swan.setStorage({&#10;    key: null,&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将数据存储在本地缓存中指定的 key 中。如果之前存在同名 key ，会覆盖掉原来该 key 对应的内容。这是一个同步接口。" name="setStorageSync" toReformat="false" toShortenFQNames="true" value="swan.setStorageSync({&#10;    key: null,&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="从本地缓存中异步获取指定 key 对应的内容。" name="getStorage" toReformat="false" toShortenFQNames="true" value="swan.getStorage({&#10;    key: null,&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="从本地缓存中同步获取指定 key 对应的内容。" name="getStorageSync" toReformat="false" toShortenFQNames="true" value="swan.getStorageSync({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="异步获取当前 storage 的相关信息。" name="getStorageInfo" toReformat="false" toShortenFQNames="true" value="swan.getStorageInfo({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="同步获取当前 storage 的相关信息。" name="getStorageInfoSync" toReformat="false" toShortenFQNames="true" value="swan.getStorageInfoSync();&#10;">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="从本地缓存中异步移除指定 key。" name="removeStorage" toReformat="false" toShortenFQNames="true" value="swan.removeStorage({&#10;    key: null,&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="从本地缓存中同步移除指定 key。" name="removeStorageSync" toReformat="false" toShortenFQNames="true" value="swan.removeStorageSync({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="清理本地数据缓存。" name="clearStorage" toReformat="false" toShortenFQNames="true" value="swan.clearStorage({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="同步清理本地数据缓存。" name="clearStorageSync" toReformat="false" toShortenFQNames="true" value="swan.clearStorageSync();&#10;">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取当前的地理位置、速度。当用户离开智能小程序后，此接口无法调用。" name="getLocation" toReformat="false" toShortenFQNames="true" value="swan.getLocation({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="打开地图选择位置。需要用户授权 scope.userLocation。" name="chooseLocation" toReformat="false" toShortenFQNames="true" value="swan.chooseLocation({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="使用百度 App 内置地图查看位置。" name="openLocation" toReformat="false" toShortenFQNames="true" value="swan.openLocation({&#10;    latitude: null,&#10;    longitude: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="createMapContext" toReformat="false" toShortenFQNames="true" value="swan.createMapContext({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在 Page 中，推荐使用this.createCanvasContext(canvasId)，进行绘图上下文的创建。也可使用swan.createCanvasContext(canvasId)，但使用swan.createCanvasContext(canvasId)进行创建时，并非在执行所在的 Page 对象中使用 canvasId 进行查找，而是在用户当前可视的 Page 中使用 canvasId 进行查找。" name="createCanvasContext" toReformat="false" toShortenFQNames="true" value="swan.createCanvasContext({&#10;    canvasId: null,&#10;    x: null,&#10;    y: null,&#10;    width: null,&#10;    height: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="canvasGetImageData" toReformat="false" toShortenFQNames="true" value="swan.canvasGetImageData({&#10;    canvasId: null,&#10;    x: null,&#10;    y: null,&#10;    width: null,&#10;    height: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="canvasPutImageData" toReformat="false" toShortenFQNames="true" value="swan.canvasPutImageData({&#10;    canvasId: null,&#10;    x: null,&#10;    y: null,&#10;    width: null,&#10;    height: null,&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="canvasToTempFilePath" toReformat="false" toShortenFQNames="true" value="swan.canvasToTempFilePath({&#10;    canvasId: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="绘图上下文" name="sContext" toReformat="false" toShortenFQNames="true" value="canvasContext({&#10;    offsetX: null,&#10;    offsetY: null,&#10;    blur: null,&#10;    color: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置填充色。" name="sContext.setFillStyle" toReformat="false" toShortenFQNames="true" value="canvasContext.setFillStyle({&#10;    offsetX: null,&#10;    offsetY: null,&#10;    blur: null,&#10;    color: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置边框颜色。" name="sContext.setStrokeStyle" toReformat="false" toShortenFQNames="true" value="canvasContext.setStrokeStyle({&#10;    offsetX: null,&#10;    offsetY: null,&#10;    blur: null,&#10;    color: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置阴影样式。" name="sContext.setShadow" toReformat="false" toShortenFQNames="true" value="canvasContext.setShadow({&#10;    offsetX: null,&#10;    offsetY: null,&#10;    blur: null,&#10;    color: null,&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个线性的渐变颜色。" name="sContext.createLinearGradient" toReformat="false" toShortenFQNames="true" value="canvasContext.createLinearGradient({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个圆形的渐变颜色。" name="sContext.createCircularGradient" toReformat="false" toShortenFQNames="true" value="canvasContext.createCircularGradient({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个颜色的渐变点。" name="sContext.addColorStop" toReformat="false" toShortenFQNames="true" value="canvasContext.addColorStop({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置线条的宽度。" name="sContext.setLineWidth" toReformat="false" toShortenFQNames="true" value="canvasContext.setLineWidth({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置线条的端点样式。" name="sContext.setLineCap" toReformat="false" toShortenFQNames="true" value="canvasContext.setLineCap({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置线条的交点样式。" name="sContext.setLineJoin" toReformat="false" toShortenFQNames="true" value="canvasContext.setLineJoin({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置线条的宽度。" name="sContext.setLineDash" toReformat="false" toShortenFQNames="true" value="canvasContext.setLineDash({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置最大斜接长度，斜接长度指的是在两条线交汇处内角和外角之间的距离，当 setLineJoin() 为 miter 时才有效，超过最大倾斜长度的，连接处将以 lineJoin 为 bevel 来显示。" name="sContext.setMiterLimit" toReformat="false" toShortenFQNames="true" value="canvasContext.setMiterLimit({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个矩形。" name="sContext.rect" toReformat="false" toShortenFQNames="true" value="canvasContext.rect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="填充一个矩形。" name="sContext.fillRect" toReformat="false" toShortenFQNames="true" value="canvasContext.fillRect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="画一个矩形(非填充)。" name="sContext.strokeRect" toReformat="false" toShortenFQNames="true" value="canvasContext.strokeRect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="清除画布上在该矩形区域内的内容。" name="sContext.clearRect" toReformat="false" toShortenFQNames="true" value="canvasContext.clearRect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对当前路径中的内容进行填充。默认的填充色为黑色。" name="sContext.fill" toReformat="false" toShortenFQNames="true" value="canvasContext.fill({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="画出当前路径的边框。默认颜色为黑色。" name="sContext.stroke" toReformat="false" toShortenFQNames="true" value="canvasContext.stroke({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="开始创建一个路径，需要调用 fill 或者 stroke 才会使用路径进行填充或描边。" name="sContext.beginPath" toReformat="false" toShortenFQNames="true" value="canvasContext.beginPath({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="关闭一个路径。" name="sContext.closePath" toReformat="false" toShortenFQNames="true" value="canvasContext.closePath({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="把路径移动到画布中的指定点，不创建线条。" name="sContext.moveTo" toReformat="false" toShortenFQNames="true" value="canvasContext.moveTo({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="lineTo 方法增加一个新点，然后创建一条从上次指定点到目标点的线。" name="sContext.lineTo" toReformat="false" toShortenFQNames="true" value="canvasContext.lineTo({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="画一条弧线。" name="sContext.arc" toReformat="false" toShortenFQNames="true" value="canvasContext.arc({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在调用scale方法后，之后创建的路径其横纵坐标会被缩放。多次调用scale，倍数会相乘。" name="sContext.scale" toReformat="false" toShortenFQNames="true" value="canvasContext.scale({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="以原点为中心，原点可以用 translate 方法修改。顺时针旋转当前坐标轴。多次调用 rotate，旋转的角度会叠加。" name="sContext.rotate" toReformat="false" toShortenFQNames="true" value="canvasContext.rotate({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对当前坐标系的原点 (0, 0) 进行变换，默认的坐标系原点为页面左上角。" name="sContext.translate" toReformat="false" toShortenFQNames="true" value="canvasContext.translate({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="clip() 方法从原始画布中剪切任意形状和尺寸。一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）。可以在使用 clip() 方法前通过使用 save() 方法对当前画布区域进行保存，并在以后的任意时间对其进行恢复（通过 “restore()” 方法）。" name="sContext.clip" toReformat="false" toShortenFQNames="true" value="canvasContext.clip({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置字体的字号。" name="sContext.setFontSize" toReformat="false" toShortenFQNames="true" value="canvasContext.setFontSize({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在画布上绘制被填充的文本。" name="sContext.fillText" toReformat="false" toShortenFQNames="true" value="canvasContext.fillText({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用于设置文字的对齐。" name="sContext.setTextAlign" toReformat="false" toShortenFQNames="true" value="canvasContext.setTextAlign({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="用于设置文字的水平对齐。" name="sContext.setTextBaseline" toReformat="false" toShortenFQNames="true" value="canvasContext.setTextBaseline({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="绘制图像到画布。" name="sContext.drawImage" toReformat="false" toShortenFQNames="true" value="canvasContext.drawImage({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置全局画笔透明度。" name="sContext.setGlobalAlpha" toReformat="false" toShortenFQNames="true" value="canvasContext.setGlobalAlpha({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="测量文本尺寸信息，目前仅返回文本宽度，同步接口。" name="sContext.measureText" toReformat="false" toShortenFQNames="true" value="canvasContext.measureText({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="给定的 (x, y) 位置绘制文本描边的方法。" name="sContext.strokeText" toReformat="false" toShortenFQNames="true" value="canvasContext.strokeText({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置虚线偏移量的属性。" name="sContext.setLineDashOffset" toReformat="false" toShortenFQNames="true" value="canvasContext.setLineDashOffset({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="对指定的图像创建模式的方法，可在指定的方向上重复元图像。" name="sContext.createPattern" toReformat="false" toShortenFQNames="true" value="canvasContext.createPattern({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建三次方贝塞尔曲线路径。" name="sContext.bezierCurveTo" toReformat="false" toShortenFQNames="true" value="canvasContext.bezierCurveTo({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建二次贝塞尔曲线路径。" name="sContext.quadraticCurveTo" toReformat="false" toShortenFQNames="true" value="canvasContext.quadraticCurveTo({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="保存当前的绘图上下文。" name="sContext.save" toReformat="false" toShortenFQNames="true" value="canvasContext.save({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="恢复之前保存的绘图上下文。" name="sContext.restore" toReformat="false" toShortenFQNames="true" value="canvasContext.restore({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中。" name="sContext.draw" toReformat="false" toShortenFQNames="true" value="canvasContext.draw({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置当前字体样式的属性。" name="sContext.font" toReformat="false" toShortenFQNames="true" value="canvasContext.font({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="使用矩阵重新设置（覆盖）当前变换的方法。" name="sContext.setTransform" toReformat="false" toShortenFQNames="true" value="canvasContext.setTransform();&#10;">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示消息提示框" name="showToast" toReformat="false" toShortenFQNames="true" value="swan.showToast({&#10;    title: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示 loading 提示框, 需主动调用 hideLoading 才能关闭提示框。" name="showLoading" toReformat="false" toShortenFQNames="true" value="swan.showLoading({&#10;    title: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="隐藏消息提示框" name="hideToast" toReformat="false" toShortenFQNames="true" value="swan.hideToast({&#10;    title: null,&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="隐藏 loading 提示框" name="hideLoading" toReformat="false" toShortenFQNames="true" value="swan.hideLoading({&#10;    title: null,&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示模态弹窗" name="showModal" toReformat="false" toShortenFQNames="true" value="swan.showModal({&#10;    title: null,&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示操作菜单" name="showActionSheet" toReformat="false" toShortenFQNames="true" value="swan.showActionSheet({&#10;    itemList: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="动态设置当前页面的标题。" name="setNavigationBarTitle" toReformat="false" toShortenFQNames="true" value="swan.setNavigationBarTitle({&#10;    title: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="该方法在当前页面显示导航条加载动画。" name="showNavigationBarLoading" toReformat="false" toShortenFQNames="true" value="swan.showNavigationBarLoading({&#10;    frontColor: null,&#10;    backgroundColor: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="隐藏导航条加载动画。" name="hideNavigationBarLoading" toReformat="false" toShortenFQNames="true" value="swan.hideNavigationBarLoading({&#10;    frontColor: null,&#10;    backgroundColor: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="动态设置当前页面导航条的颜色。" name="setNavigationBarColor" toReformat="false" toShortenFQNames="true" value="swan.setNavigationBarColor({&#10;    frontColor: null,&#10;    backgroundColor: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="为 tabBar 某一项的右上角添加文本" name="setTabBarBadge" toReformat="false" toShortenFQNames="true" value="swan.setTabBarBadge({&#10;    index: null,&#10;    text: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="移除tabBar某一项右上角的文本" name="removeTabBarBadge" toReformat="false" toShortenFQNames="true" value="swan.removeTabBarBadge({&#10;    index: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示 tabBar 某一项的右上角的红点" name="showTabBarRedDot" toReformat="false" toShortenFQNames="true" value="swan.showTabBarRedDot({&#10;    index: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="隐藏 tabBar 某一项的右上角的红点" name="hideTabBarRedDot" toReformat="false" toShortenFQNames="true" value="swan.hideTabBarRedDot({&#10;    index: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="动态设置 tabBar 的整体样式" name="setTabBarStyle" toReformat="false" toShortenFQNames="true" value="swan.setTabBarStyle({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="动态设置 tabBar 某一项的内容" name="setTabBarItem" toReformat="false" toShortenFQNames="true" value="swan.setTabBarItem({&#10;    index: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="显示 tabBar" name="showTabBar" toReformat="false" toShortenFQNames="true" value="swan.showTabBar({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="隐藏 tabBar" name="hideTabBar" toReformat="false" toShortenFQNames="true" value="swan.hideTabBar({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="保留当前页面，跳转到应用内的某个页面，但是不能跳转到 tabbar 页面，使用 swan.navigateBack 可以返回到原页面。" name="navigateTo" toReformat="false" toShortenFQNames="true" value="swan.navigateTo({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="关闭当前页面，跳转到应用内的某个页面。" name="redirectTo" toReformat="false" toShortenFQNames="true" value="swan.redirectTo({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。" name="switchTab" toReformat="false" toShortenFQNames="true" value="swan.switchTab({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="关闭当前页面，返回上一页面或多级页面。" name="navigateBack" toReformat="false" toShortenFQNames="true" value="swan.navigateBack({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="关闭所有页面，打开到应用内的某个页面。" name="reLaunch" toReformat="false" toShortenFQNames="true" value="swan.reLaunch({&#10;    url: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建一个动画实例 animation" name="createAnimation" toReformat="false" toShortenFQNames="true" value="swan.createAnimation({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="动画实例可以调用以下方法来描述动画，调用结束后会返回自身，支持链式调用的写法。" name="tion" toReformat="false" toShortenFQNames="true" value="animation({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将页面滚动到目标位置（可以设置滚动动画时长）。" name="pageScrollTo" toReformat="false" toShortenFQNames="true" value="swan.pageScrollTo({&#10;    scrollTop: null,&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置窗口的背景颜色。" name="setBackgroundColor" toReformat="false" toShortenFQNames="true" value="swan.setBackgroundColor({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="设置窗口下拉背景loading样式" name="setBackgroundTextStyle" toReformat="false" toShortenFQNames="true" value="swan.setBackgroundTextStyle({&#10;    textStyle: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="lDownRefresh" toReformat="false" toShortenFQNames="true" value="onPullDownRefresh({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="开始下拉刷新，调用后触发下拉刷新动画，效果与用户手动下拉刷新一致。" name="startPullDownRefresh" toReformat="false" toShortenFQNames="true" value="swan.startPullDownRefresh({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="停止当前页面下拉刷新。" name="stopPullDownRefresh" toReformat="false" toShortenFQNames="true" value="swan.stopPullDownRefresh();&#10;">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="延迟一部分操作到下一个时间片再执行。（类似于 setTimeout）" name="nextTick" toReformat="false" toShortenFQNames="true" value="swan.nextTick();&#10;">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取菜单按钮（右上角胶囊按钮）的布局位置信息。坐标信息以屏幕左上角为原点。" name="getMenuButtonBoundingClientRect" toReformat="false" toShortenFQNames="true" value="swan.getMenuButtonBoundingClientRect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="创建并返回一个 IntersectionObserver 对象实例。在自定义组件中，可以使用 this.createIntersectionObserver([options]) 来代替。" name="createIntersectionObserver" toReformat="false" toShortenFQNames="true" value="swan.createIntersectionObserver({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="IntersectionObserver 对象，用于推断某些节点是否可以被用户看见、有多大比例可以被用户看见。" name="sectionObserver" toReformat="false" toShortenFQNames="true" value="IntersectionObserver({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="使用选择器指定一个节点，作为参照区域之一。" name="sectionObserver.relativeTo" toReformat="false" toShortenFQNames="true" value="IntersectionObserver.relativeTo({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="指定页面显示区域作为参照区域之一" name="sectionObserver.relativeToViewport" toReformat="false" toShortenFQNames="true" value="IntersectionObserver.relativeToViewport({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="指定目标节点并开始监听相交状态变化情况" name="sectionObserver.observe" toReformat="false" toShortenFQNames="true" value="IntersectionObserver.observe({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="停止监听。回调函数将不再触发" name="sectionObserver.disconnect" toReformat="false" toShortenFQNames="true" value="IntersectionObserver.disconnect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="返回一个 SelectorQuery 对象实例。可以在这个实例上使用 select 等方法选择节点，并使用 boundingClientRect 等方法选择需要查询的信息。" name="createSelectorQuery" toReformat="false" toShortenFQNames="true" value="swan.createSelectorQuery({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="" name="torQuery" toReformat="false" toShortenFQNames="true" value="selectorQuery({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="将选择器的选取范围更改为自定义组件 component 内（初始时，选择器仅选取页面范围的节点，不会选取任何自定义组件中的节点）。" name="torQuery.in" toReformat="false" toShortenFQNames="true" value="selectorQuery.in({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在当前页面下选择第一个匹配选择器 selector 的节点，返回一个 NodesRef 对象实例，可以用于获取节点信息。" name="torQuery.select" toReformat="false" toShortenFQNames="true" value="selectorQuery.select({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="在当前页面下选择匹配选择器 selector 的节点，返回一个 NodesRef 对象实例。 与 selectorQuery.select(selector) 不同的是，它选择所有匹配选择器的节点。" name="torQuery.selectAll" toReformat="false" toShortenFQNames="true" value="selectorQuery.selectAll({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="选择显示区域，可用于获取显示区域的尺寸、滚动位置等信息，返回一个NodesRef对象实例。" name="torQuery.selectViewport" toReformat="false" toShortenFQNames="true" value="selectorQuery.selectViewport({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="执行所有的请求，请求结果按请求次序构成数组，在 callback 的第一个参数中返回。" name="torQuery.exec" toReformat="false" toShortenFQNames="true" value="selectorQuery.exec({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="节点信息" name="Ref" toReformat="false" toShortenFQNames="true" value="nodesRef({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="添加节点的布局位置的查询请求，相对于显示区域，以像素为单位。其功能类似于 DOM 的 getBoundingClientRect。返回值是 nodesRef 对应的 selectorQuery。" name="Ref.boundingClientRect" toReformat="false" toShortenFQNames="true" value="nodesRef.boundingClientRect({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="添加节点的滚动位置查询请求，以像素为单位。节点必须是 scroll-view 或者 viewport 。返回值是 nodesRef 对应的 selectorQuery 。" name="Ref.scrollOffset" toReformat="false" toShortenFQNames="true" value="nodesRef.scrollOffset({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取节点的相关信息，需要获取的字段在 fields 中指定。返回值是 nodesRef 对应的 selectorQuery 。" name="Ref.fields" toReformat="false" toShortenFQNames="true" value="nodesRef.fields({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="支持在小程序内调起添加到我的小程序引导组件，引导用户添加到我的小程序。引导组件设计文档详见：添加到我的小程序引导。" name="showFavoriteGuide" toReformat="false" toShortenFQNames="true" value="swan.showFavoriteGuide({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取系统信息" name="getSystemInfo" toReformat="false" toShortenFQNames="true" value="swan.getSystemInfo({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取系统信息同步接口" name="getSystemInfoSync" toReformat="false" toShortenFQNames="true" value="swan.getSystemInfoSync({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="获取运行环境信息同步接口" name="getEnvInfoSync" toReformat="false" toShortenFQNames="true" value="swan.getEnvInfoSync({&#10;});">
+        <context>
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template description="判断智能小程序的API，回调，参数，组件等是否在当前版本可用。" name="canIUse" toReformat="false" toShortenFQNames="true" value="swan.canIUse(&quot;$offset$&quot;);">
         <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.downloadFile" value="swan.downloadFile({&#10;  url: '$offset$', &#10;  success: res =&gt; {&#10;   &#10;  }&#10;});" description="���������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="监听内存不足的告警事件，Android 下有告警等级划分，只有 LOW 和 CRITICAL 会回调开发者；iOS 无等级划分。" name="onMemoryWarning" toReformat="false" toShortenFQNames="true" value="swan.onMemoryWarning({&#10;    level: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.connectSocket" value="swan.connectSocket({&#10;  url: '$offset$'&#10;});" description="������������ WebSocket ��������������������������������������������������� WebSocket ������������������������������������ WebSocket ��������������������������������������������������������� WebSocket ������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取网络类型" name="getNetworkType" toReformat="false" toShortenFQNames="true" value="swan.getNetworkType({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onSocketOpen" value="swan.onSocketOpen(res =&gt; {&#10;&#10;})" description="������WebSocket������������������" toReformat="false" toShortenFQNames="true">
+    <template description="监听网络状态变化" name="onNetworkStatusChange" toReformat="false" toShortenFQNames="true" value="swan.onNetworkStatusChange({&#10;    isConnected: null,&#10;    networkType: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onSocketError" value="swan.onSocketError(res=&gt;{&#10; &#10;})" description="������WebSocket������" toReformat="false" toShortenFQNames="true">
+    <template description="监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 swan.stopAccelerometer 停止监听。" name="onAccelerometerChange" toReformat="false" toShortenFQNames="true" value="swan.onAccelerometerChange({&#10;    x: null,&#10;    y: null,&#10;    z: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.sendSocketMessage" value="swan.sendSocketMessage({&#10;      data:'$offset$'&#10;})" description="������ WebSocket ������������������������������ swan.connectSocket��������� swan.onSocketOpen ���������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="开始监听加速度数据" name="startAccelerometer" toReformat="false" toShortenFQNames="true" value="swan.startAccelerometer({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onSocketMessage" value="swan.onSocketMessage(res =&gt; {&#10;  &#10;})" description="������WebSocket���������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="停止监听加速度数据" name="stopAccelerometer" toReformat="false" toShortenFQNames="true" value="swan.stopAccelerometer({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.closeSocket" value="swan.closeSocket();" description="������WebSocket���������" toReformat="false" toShortenFQNames="true">
+    <template description="监听罗盘数据，频率：5次/秒，接口调用后会自动开始监听，可使用swan.stopCompass停止监听。" name="onCompassChange" toReformat="false" toShortenFQNames="true" value="swan.onCompassChange({&#10;    direction: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onSocketClose" value="swan.onSocketClose(res =&gt; {&#10;&#10;})" description="������WebSocket������" toReformat="false" toShortenFQNames="true">
+    <template description="开始监听罗盘数据。" name="startCompass" toReformat="false" toShortenFQNames="true" value="swan.startCompass({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.chooseImage" value="swan.chooseImage({ &#10;  success: res =&gt; { &#10;  &#10;  }&#10;});" description="������������������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="停止监听罗盘数据。" name="stopCompass" toReformat="false" toShortenFQNames="true" value="swan.stopCompass({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.previewImage" value="swan.previewImage({ &#10;  urls: [$offset$]&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="监听设备方向变化事件。频率根据 swan.startDeviceMotionListening() 的 interval 参数。可以使用 swan.stopDeviceMotionListening() 停止监听。" name="onDeviceMotionChange" toReformat="false" toShortenFQNames="true" value="swan.onDeviceMotionChange({&#10;    alpha: null,&#10;    beta: null,&#10;    gamma: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getImageInfo" value=" swan.getImageInfo({&#10;      src:'$offset$'    &#10; });" description="������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="开始监听设备方向的变化" name="startDeviceMotionListening" toReformat="false" toShortenFQNames="true" value="swan.startDeviceMotionListening({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.stopRecord" value=" swan.stopRecord()" description="��� ������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="停止监听设备方向的变化。" name="stopDeviceMotionListening" toReformat="false" toShortenFQNames="true" value="swan.stopDeviceMotionListening({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.playVoice" value=" swan.playVoice({&#10;      filePath: '$offset$'&#10; })" description="������������������������������������������������������������������������������������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="支持在小程序内获取当前设备电量" name="getBatteryInfo" toReformat="false" toShortenFQNames="true" value="swan.getBatteryInfo({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.pauseVoice" value="swan.pauseVoice()" description="���������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="获取当前设备电量同步接口，ios系统不可用。" name="getBatteryInfoSync" toReformat="false" toShortenFQNames="true" value="swan.getBatteryInfoSync({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.stopVoice" value="swan.stopVoice();" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="调起客户端扫码界面，扫码成功后返回对应的结果。" name="scanCode" toReformat="false" toShortenFQNames="true" value="swan.scanCode({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getBackgroundAudioPlayerState" value="swan.getBackgroundAudioPlayerState({&#10;    success:res=&gt;{&#10;  &#10;    }&#10;});" description="������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="设置屏幕亮度" name="setScreenBrightness" toReformat="false" toShortenFQNames="true" value="swan.setScreenBrightness({&#10;    value: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.playBackgroundAudio" value="swan.playBackgroundAudio({&#10;    dataUrl:&quot;$offset$&quot;&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取屏幕亮度" name="getScreenBrightness" toReformat="false" toShortenFQNames="true" value="swan.getScreenBrightness({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.pauseBackgroundAudio" value="swan.pauseBackgroundAudio()" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="设置是否保持常亮状态。仅在当前智能小程序生效，离开智能小程序后设置失效。" name="setKeepScreenOn" toReformat="false" toShortenFQNames="true" value="swan.setKeepScreenOn({&#10;    keepScreenOn: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.seekBackgroundAudio" value="swan.seekBackgroundAudio({&#10;    position: 0&#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="监听用户主动截屏事件，用户使用系统截屏按键截屏时触发此事件。" name="onUserCaptureScreen" toReformat="false" toShortenFQNames="true" value="swan.onUserCaptureScreen();&#10;">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.stopBackgroundAudio" value="swan.stopBackgroundAudio();" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="使手机发生较长时间的振动（400ms）" name="vibrateLong" toReformat="false" toShortenFQNames="true" value="swan.vibrateLong({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onBackgroundAudioPlay" value="swan.onBackgroundAudioPlay(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="使手机发生较短时间的振动（15ms），仅在 iPhone 7/7 Plus 以上及 Android 机型生效。" name="vibrateShort" toReformat="false" toShortenFQNames="true" value="swan.vibrateShort({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onBackgroundAudioPause" value="swan.onBackgroundAudioPause(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="调用后，用户可以选择将联系人数据以“新增联系人”或“添加到已有联系人”的方式，写入手机系统通讯录，完成手机通讯录联系人和联系方式的增加。" name="addPhoneContact" toReformat="false" toShortenFQNames="true" value="swan.addPhoneContact({&#10;    firstName: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onBackgroundAudioStop" value="swan.onBackgroundAudioStop(()=&gt;{&#10;&#10;});" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="拨打电话" name="makePhoneCall" toReformat="false" toShortenFQNames="true" value="swan.makePhoneCall({&#10;    phoneNumber: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.saveFile" value="swan.saveFile({&#10;  tempFilePath: '$offset$',&#10;  success: res=&gt;{&#10;&#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="设置系统剪贴板的内容" name="setClipboardData" toReformat="false" toShortenFQNames="true" value="swan.setClipboardData({&#10;    data: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getSavedFileList" value="swan.getSavedFileList({&#10;  success:res=&gt;{&#10;   &#10;  }&#10;});" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="获取系统剪贴板内容" name="getClipboardData" toReformat="false" toShortenFQNames="true" value="swan.getClipboardData({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getSavedFileInfo" value="swan.getSavedFileInfo({&#10;  filePath: '$offset$', &#10;  success:res=&gt;{&#10;    &#10;  }&#10;});" description="���������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取第三方平台自定义的数据字段。" name="getExtConfig" toReformat="false" toShortenFQNames="true" value="swan.getExtConfig({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.removeSavedFile" value="swan.removeSavedFile({&#10;    filePath: '$offset$'&#10;})" description="���������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="" name="getExtConfigSync" toReformat="false" toShortenFQNames="true" value="swan.getExtConfigSync({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.createAudioContext" value="swan.createAudioContext(&quot;$offset$&quot;);" description="��������������� audio ��������� audioContext ������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="调用接口 swan.login 获取 Authorization Code，智能小程序可以使用swan.login()接口获取Authorization Code。" name="login" toReformat="false" toShortenFQNames="true" value="swan.login({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.createVideoContext" value="swan.createVideoContext(&quot;$offset$&quot;);" description="��������������� video ��������� videoContext ������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="通过上述接口获得的用户登录态拥有一定的时效性，用户越久未使用智能小程序，用户登录态越有可能失效；反之如果用户一直在使用智能小程序，则用户登录态一直保持有效。具体时效逻辑由宿主维护，对开发者透明。开发者可以调用 swan.checkSession 接口 检测当前用户登录态是否有效，登录态过期后开发者可以再调用 swan.login 获取新的用户登录态。" name="checkSession" toReformat="false" toShortenFQNames="true" value="swan.checkSession({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.setStorage" value="swan.setStorage({&#10;  key:&quot;$offset$&quot;&#10;  data:&quot;&quot;&#10;});" description="������������������������������������������ key ��������������������������� key ���������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取百度 App登录状态" name="isLoginSync" toReformat="false" toShortenFQNames="true" value="swan.isLoginSync({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.setStorageSync" value="swan.setStorageSync('$offset$', '');" description="��� data ��������������������������������� key ��������������������������� key ������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="提前向用户发起授权请求。调用后会立刻弹窗询问用户是否同意授权智能小程序使用某项功能或获取用户的某些数据，但不会实际调用对应接口。如果用户之前已经同意授权，则不会出现弹窗，直接返回成功。" name="authorize" toReformat="false" toShortenFQNames="true" value="swan.authorize({&#10;    scope: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getStorage" value="swan.getStorage({&#10;  key: '$offset$',&#10;  success: res =&gt; {&#10;   &#10;  } &#10;});" description="������������������������������������ key ���������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取 swanid" name="getSwanId" toReformat="false" toShortenFQNames="true" value="swan.getSwanId({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getStorageSync" value="swan.getStorageSync('$offset$');" description="������������������������������������ key ���������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取用户信息，首次使用的用户会弹出授权提示窗，若用户同意，则会返回用户的真实数据；若用户未登录或者拒绝授权，会返回默认用户“百度网友”及默认的头像地址。" name="getUserInfo" toReformat="false" toShortenFQNames="true" value="swan.getUserInfo({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getStorageInfo" value="swan.getStorageInfo({&#10;  success: res=&gt;{&#10;&#10;  }&#10;})" description="������������������storage���������������" toReformat="false" toShortenFQNames="true">
+    <template description="调起客户端智能小程序设置界面，返回用户设置的操作结果。" name="openSetting" toReformat="false" toShortenFQNames="true" value="swan.openSetting({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getStorageInfoSync" value="swan.getStorageInfoSync()" description="������������������storage���������������" toReformat="false" toShortenFQNames="true">
+    <template description="获取用户的当前设置" name="getSetting" toReformat="false" toShortenFQNames="true" value="swan.getSetting({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.removeStorage" value="swan.removeStorage({&#10;  key: '$offset$',&#10;  success: res =&gt; {&#10;   &#10;  } &#10;})" description="������������������������������������ key" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="" name="reAppMessage" toReformat="false" toShortenFQNames="true" value="onShareAppMessage({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.removeStorageSync" value="swan.removeStorageSync()" description="������������������������������������ key" toReformat="false" toShortenFQNames="true">
+    <template description="调起分享面板" name="openShare" toReformat="false" toShortenFQNames="true" value="swan.openShare({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.clearStorage" value="swan.clearStorage()" description="������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="调起用户编辑收货地址原生界面，并在编辑完成后返回用户选择的地址，需要用户授权 scope.address。" name="chooseAddress" toReformat="false" toShortenFQNames="true" value="swan.chooseAddress({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.clearStorageSync" value="swan.clearStorageSync()" description="������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="百度收银台，聚合了主流的百度钱包、微信、支付宝、网银等多种支付方式，方便开发者一站式快速接入多种支付渠道，让百度用户能在智能小程序场景下，直接完成支付、交易闭环，提升用户支付体验的同时，提高智能小程序的订单转化率。" name="requestPolymerPayment" toReformat="false" toShortenFQNames="true" value="swan.requestPolymerPayment({&#10;    orderInfo: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getLocation" value="swan.getLocation({&#10;  success: res =&gt; {&#10;&#10;  }&#10;})" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="选择用户的发票抬头，需要用户授权 scope.invoiceTitle。" name="chooseInvoiceTitle" toReformat="false" toShortenFQNames="true" value="swan.chooseInvoiceTitle({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.chooseLocation" value="swan.chooseLocation({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="打开另一个小程序" name="navigateToSmartProgram" toReformat="false" toShortenFQNames="true" value="swan.navigateToSmartProgram({&#10;    appKey: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.openLocation" value=" swan.openLocation({&#10;   &#10; })" description="������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="返回到上一个小程序" name="navigateBackSmartProgram" toReformat="false" toShortenFQNames="true" value="swan.navigateBackSmartProgram({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getNetworkType" value="swan.getNetworkType({&#10;  success:res =&gt; {&#10;   &#10;  }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="H5 页面调起百度智能小程序。" name="开小程序" toReformat="false" toShortenFQNames="true" value="H5页面打开小程序({&#10;    appkey: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getSystemInfo" value="swan.getSystemInfo({&#10;  success: res =&gt; {&#10; &#10;  }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
+    <template description="智能小程序可接入百度搜索和百度 App 信息流，swan.setPageInfo 负责为小程序设置各类页面基础信息，包括标题、关键字、页面描述以及图片信息、视频信息等。开发者为智能小程序设置完备的页面基础信息，有助于智能小程序在搜索引擎和信息流中得到更加有效的展示和分发。" name="setPageInfo" toReformat="false" toShortenFQNames="true" value="swan.setPageInfo({&#10;    title: null,&#10;    keywords: null,&#10;    description: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.getSystemInfoSync" value="swan.getSystemInfoSync({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="不推荐使用" name="setMetaDescription" toReformat="false" toShortenFQNames="true" value="swan.setMetaDescription({&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onAccelerometerChange" value="swan.onAccelerometerChange(res=&gt;{&#10; &#10;})" description="������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="不推荐使用" name="setMetaKeywords" toReformat="false" toShortenFQNames="true" value="swan.setMetaKeywords({&#10;    content: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.onCompassChange" value="swan.onCompassChange(res =&gt; {&#10; &#10;});" description="������������������������������5���/���" toReformat="false" toShortenFQNames="true">
+    <template description="不推荐使用" name="setDocumentTitle" toReformat="false" toShortenFQNames="true" value="swan.setDocumentTitle({&#10;    title: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.makePhoneCall" value="swan.makePhoneCall({&#10;  phoneNumber: '$offset$' //������������������������������������������&#10;})" description="������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="" name="loadSubPackage" toReformat="false" toShortenFQNames="true" value="swan.loadSubPackage({&#10;    root: null,&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.showToast" value="swan.showToast({&#10;  title: '$offset$'&#10;&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="获取全局唯一的版本更新管理器，用于管理小程序更新。" name="getUpdateManager" toReformat="false" toShortenFQNames="true" value="swan.getUpdateManager({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.showModal" value="swan.showModal({&#10;  title: '$offset$',&#10;  content: '',&#10;  success: res=&gt;{&#10;    if (res.confirm) {&#10;    &#10;    }&#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="设置是否打开调试开关，此开关对正式版也能生效。" name="setEnableDebug" toReformat="false" toShortenFQNames="true" value="swan.setEnableDebug({&#10;    enableDebug: null,&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.showActionSheet" value="swan.showActionSheet({&#10;  itemList: [$offset$],&#10;  success:res =&gt; {&#10;    &#10;      &#10;    &#10;  }&#10;})" description="���������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="自定义分析数据上报接口。使用前，需要在小程序管理后台自定义分析中新建事件，配置好事件名与字段。" name="reportAnalytics" toReformat="false" toShortenFQNames="true" value="swan.reportAnalytics();&#10;">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.setNavigationBarTitle" value="swan.setNavigationBarTitle({&#10;  title: '$offset$'&#10;})" description="���������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="取消由 setInterval 设置的定时器。" name="Interval" toReformat="false" toShortenFQNames="true" value="clearInterval({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.showNavigationBarLoading" value="swan.showNavigationBarLoading()" description="������������������������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="取消由 setTimeout 设置的定时器。" name="Timeout" toReformat="false" toShortenFQNames="true" value="clearTimeout({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.hideNavigationBarLoading" value="swan.hideNavigationBarLoading()&#10;" description="���������������������������" toReformat="false" toShortenFQNames="true">
+    <template description="设定一个定时器。按照指定的周期（以毫秒计）来执行注册的回调函数。" name="terval" toReformat="false" toShortenFQNames="true" value="setInterval({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template name="swan.navigateTo" value="swan.navigateTo({&#10;  url: '$offset$'&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
+    <template description="设定一个定时器，在定时到期以后执行注册的回调函数。" name="meout" toReformat="false" toShortenFQNames="true" value="setTimeout({&#10;});">
         <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.redirectTo" value="swan.redirectTo({&#10;  url: '$offset$'&#10;})" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.navigateBack" value="swan.navigateBack()" description="������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.createAnimation" value="swan.createAnimation({$offset$})" description="������������������������animation" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.createContext" value="swan.createContext();" description="������������������������������context������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.drawCanvas" value="  swan.drawCanvas({&#10;      canvasId: '$offset$'&#10;   })" description="������canvas" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.canvasToTempFilePath" value="swan.canvasToTempFilePath({&#10;    canvasId:'$offset$'&#10;})" description="������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.hideKeyboard" value="swan.hideKeyboard();" description="������������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.stopPullDownRefresh" value="swan.stopPullDownRefresh()" description="������������������������������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.login" value="swan.login({$offset$})" description="���������������������������������code���������������������������������������������������������������������openid��� ������������������ ���������������session_key���������������������������������������������������������������������" toReformat="false" toShortenFQNames="true">
-        <variable name="offset" expression="" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.getUserInfo" value="swan.getUserInfo({&#10;    success:res=&gt;{&#10;    &#10;    }&#10;})" description="������������������������������������ swan.login ���������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
-        </context>
-    </template>
-    <template name="swan.requestPayment" value="swan.requestPayment({&#10;   'timeStamp': '',&#10;   'nonceStr': '',&#10;   'package': '',&#10;   'signType': 'MD5',&#10;   'paySign': '',&#10;   'success':res =&gt; {&#10;   },&#10;   'fail': res =&gt; {&#10;   }&#10;})" description="������������������" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="JAVA_SCRIPT" value="true" />
-            <option name="JS_EXPRESSION" value="true" />
-            <option name="JSX_HTML" value="true" />
-            <option name="JS_STATEMENT" value="true" />
+            <option name="JAVA_SCRIPT" value="true"/>
+            <option name="JS_EXPRESSION" value="true"/>
+            <option name="JSX_HTML" value="true"/>
+            <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
 </templateSet>

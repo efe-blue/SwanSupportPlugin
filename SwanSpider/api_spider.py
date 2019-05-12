@@ -53,7 +53,7 @@ for component in api_tags:
                 elif j == 1:
                     attr_item['type'] = value.get_text()
                 elif j == 2:
-                    attr_item['required'] = True if value.get_text() == '' else False
+                    attr_item['required'] = True if value.get_text() == u'是' else False
                 elif j == 3:
                     attr_item['default'] = value.get_text()
                 elif j == 4:
@@ -65,17 +65,27 @@ for component in api_tags:
 
     # 生成 xml
     template = doc.createElement('template')
-    template.setAttribute('name', tag)
+    template.setAttribute('name', tag[5:])
     code_holder = tag
+    print attr_array
+    br = '\n'
     if len(attr_array) == 0:
-        code_holder += '();'
+        code_holder += '();&#10;'
     else:
         code_holder += '({&#10;'
         for argument in attr_array:
-            pass
+            if not argument.has_key('name') or not argument.has_key('type'):
+                continue
+            name = argument['name']
+            if name == 'success':
+                code_holder += '    success: res =&gt; {&#10;    },&#10;'
+            if name == 'fail':
+                code_holder += '    fail: res =&gt; {&#10;    },&#10;'
+            else:
+                if not argument.has_key('required') or not argument['required']:
+                    continue
+                code_holder += '    {}: null,&#10;'.format(name)
         code_holder += '});'
-        pass
-    code_holder = tag + '({&#10;})'
     template.setAttribute('value', code_holder)
     template.setAttribute('toReformat', "false")
     template.setAttribute('toShortenFQNames', "true")
