@@ -69,6 +69,9 @@ public class SwanTagDescriptor implements XmlElementDescriptor {
         XmlAttributeDescriptor descriptor =  ContainerUtil.find(getAttributesDescriptors(xmlTag), new Condition<XmlAttributeDescriptor>() {
             @Override
             public boolean value(XmlAttributeDescriptor descriptor1) {
+                if (attributeName == null || descriptor1 == null) {
+                    return false;
+                }
                 return attributeName.equals(descriptor1.getName());
             }
         });

@@ -4,6 +4,7 @@ import com.apkfuns.swan.model.SwanAttribute;
 import com.apkfuns.swan.model.ValueType;
 import com.apkfuns.swan.tag.SwanTag;
 import com.apkfuns.swan.utils.SwanFileUtil;
+import com.apkfuns.swan.utils.SwanLog;
 import com.apkfuns.swan.utils.SwanTagManager;
 import com.apkfuns.swan.utils.SwanUtil;
 import com.intellij.lang.annotation.Annotation;
@@ -38,6 +39,8 @@ public class SwanAnnotator implements Annotator {
             functionCache.addAll(SwanFileUtil.getAllFunctionNames(psiElement));
             variableCache.addAll(SwanFileUtil.getDataVarNames(psiElement));
             variableInXmlCache = new HashSet<>();
+            SwanLog.debug("checkStructure  functionCache=" + functionCache + ", variableCache="
+            + variableCache + ", variableInXmlCache=" + variableInXmlCache);
             checkStructure(psiElement, annotationHolder);
         }
     }

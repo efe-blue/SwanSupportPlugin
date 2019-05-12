@@ -16,6 +16,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.css.CssFileType;
+import com.intellij.psi.impl.source.PsiFileImpl;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
@@ -70,6 +71,8 @@ public class SwanFileUtil {
                     SwanAttribute attribute = tag.getAttribute(attrName);
                     if (attribute != null) {
                         return attribute.getValueType();
+                    } else if (attrName.startsWith("bind:") || attrName.startsWith("catch:")){
+                        return ValueType.FUNCTION;
                     }
                 }
             }
@@ -117,6 +120,10 @@ public class SwanFileUtil {
      */
     @Nullable
     public static JSObjectLiteralExpression getPageExpression(@NotNull JSFile matchJsFile) {
+        // 未打开过指定文件需要加载下树结构
+        if (matchJsFile instanceof PsiFileImpl) {
+            ((PsiFileImpl) matchJsFile).calcTreeElement();
+        }
         JSSourceElement[] jsSourceElements = matchJsFile.getStatements();
         for (JSSourceElement sourceElement : jsSourceElements) {
             if (sourceElement instanceof JSExpressionStatement) {
@@ -230,7 +237,6 @@ public class SwanFileUtil {
             for (JSProperty property : properties) {
                 if (property.getValue() instanceof JSObjectLiteralExpression
                         && "data".equals(property.getName())) {
-                    SwanLog.debug("varName=" + varName);
                     JSProperty[] childProperties = ((JSObjectLiteralExpression) property.getValue()).getProperties();
                     for (JSProperty childProperty : childProperties) {
                         if (varName.equals(childProperty.getName())) {
