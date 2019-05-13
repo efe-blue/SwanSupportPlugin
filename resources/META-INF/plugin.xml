@@ -1,25 +1,25 @@
 <idea-plugin>
     <id>com.apkfuns.swan.plugin</id>
     <name>swan support</name>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
 
     <description><![CDATA[
-      Swan Language support for WebStorm.<br><br>
+      Swan Language support for WebStorm. 百度智能小程序支持插件<br><br>
       <b>Features:</b> <br>
       <ul>
-      <li>支持智能小程序项目创建</li>
-      <li>支持智能小程序组件和属性智能提醒和内容校验</li>
-      <li>支持智能小程序方法和参数提醒</li>
-      <li>支持swan文件和JS文件互相切换和变量和方法智能提取</li>
-      <li>更多强大的功能欢迎下载体验~</li>
+      <li>Supporting Swan Project Creation 支持智能小程序项目创建</li>
+      <li>Supporting Swan Component and Attribute reminder 支持智能小程序组件和属性智能提醒和内容校验</li>
+      <li>Supporting Swan Method and parameter reminder 支持智能小程序方法和参数提醒</li>
+      <li>Supporting SwanFile and JsFile Mutual reference 支持swan文件和JS文件互相切换和变量和方法智能提取</li>
+      <li>More powerful functions welcome download experience 更多强大的功能欢迎下载体验~</li>
       </ul><br>
     ]]></description>
 
     <change-notes><![CDATA[
       <ul>
-      <li><b>1.0.2:</b>
-        <br> 智能小程序支持插件发布.
+      <li><b>1.0.5:</b>
+        <br> swan support plugin release 智能小程序插件发布.
       </li>
       </ul>
     ]]>

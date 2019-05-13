@@ -9,11 +9,12 @@ baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智�
 * 更多强大的功能欢迎下载体验~
 
 ## QuickStart
-[下载插件]() 或 WebStorm 插件中心搜索 `swan`
+[下载插件](./downloads) 或 WebStorm 插件中心搜索 `swan`
 
 ## Preview
 <img src='./screenshots/create_project.png' style="max-width='600px'"/><br>
 
+更多文档待补充~
 
 ## Todo
 * 支持变量层级调用的引用跳转，如`{{a.b.c}}`
