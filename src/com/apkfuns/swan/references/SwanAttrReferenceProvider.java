@@ -31,6 +31,9 @@ public class SwanAttrReferenceProvider extends PsiReferenceProvider {
             if (text.startsWith("\"") && text.endsWith("\"")) {
                 text = text.substring(1, text.length() - 1);
                 originText = text;
+            } else if (text.startsWith("'") && text.endsWith("'")) {
+                text = text.substring(1, text.length() - 1);
+                originText = text;
             }
             String mustacheValue = SwanFileUtil.getMustacheValue(text);
             if (mustacheValue != null) {
