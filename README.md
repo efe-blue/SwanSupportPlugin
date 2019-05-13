@@ -1,4 +1,7 @@
 # SwanDevPlugin
+
+[![](https://img.shields.io/badge/JetbrainsPlugin-1.0.5-blue.svg)](https://plugins.jetbrains.com/plugin/12409-swan-support)
+
 baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智能提醒插件
 
 ## Feature：
