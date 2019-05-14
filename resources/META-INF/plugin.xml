@@ -50,6 +50,7 @@
         <xml.elementDescriptorProvider implementation="com.apkfuns.swan.tag.SwanTagNameProvider"/>
         <xml.attributeDescriptorsProvider order="first" implementation="com.apkfuns.swan.attributes.SwanAttrDescriptorProvider"/>
         <xml.xmlExtension implementation="com.apkfuns.swan.lang.SwanXmlExtension"/>
+        <highlightErrorFilter implementation="com.apkfuns.swan.inspection.SwanHighlightErrorFilter"/>
 
         <completion.contributor language="HTML" order="first,before xml,before liveTemplates"
                                 implementationClass="com.apkfuns.swan.completion.SwanCompletionContributor"/>
