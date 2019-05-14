@@ -17,7 +17,39 @@ baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智�
 ![](./screenshots/plugin_center.png)
 
 ## Preview
+* 创建新项目
 <img src='./screenshots/create_project.png' style="max-width='600px'"/><br>
+
+* 新的页面和组件模板
+<img src='./screenshots/create_file.png' style="max-width='600px'"/><br>
+
+* 组件提醒
+<img src='./screenshots/component_remind.png' style="max-width='600px'"/><br>
+
+* 属性提醒
+<img src='./screenshots/attribute_remind.png' style="max-width='600px'"/><br>
+
+* 跳转官方文档
+<img src='./screenshots/component_link.png' style="max-width='600px'"/><br>
+
+* 选择对应JS文件的方法和引用跳转
+<img src='./screenshots/method_remind.gif' style="max-width='600px'"/><br>
+
+* swan属性直接创建方法
+<img src='./screenshots/swan_create_method.gif' style="max-width='600px'"/><br>
+
+* api 模板
+<img src='./screenshots/api_template.gif' style="max-width='600px'"/><br>
+
+* 左上角swan和对应JS文件互相跳转
+<img src='./screenshots/swan_js_link.gif' style="max-width='600px'"/><br>
+
+* 重写父类方法
+<img src='./screenshots/extends_method.gif' style="max-width='600px'"/><br>
+
+* 参数智能提醒
+<img src='./screenshots/parameter_intelligence.gif' style="max-width='600px'"/><br>
+
 
 更多文档待补充~
 
