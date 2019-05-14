@@ -39,15 +39,18 @@ baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智�
 <img src='./screenshots/swan_create_method.gif' style="max-width='600px'"/><br>
 
 * api 模板
+
 <img src='./screenshots/api_template.gif' style="max-width='600px'"/><br>
 
 * 左上角swan和对应JS文件互相跳转
 <img src='./screenshots/swan_js_link.gif' style="max-width='600px'"/><br>
 
 * 重写父类方法 
+
 <img src='./screenshots/extends_method.gif' style="max-width='600px'"/><br>
 
 * 参数智能提醒 
+
 <img src='./screenshots/parameter_intelligence.gif' style="max-width='600px'"/><br>
 
 
