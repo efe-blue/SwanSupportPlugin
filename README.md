@@ -14,6 +14,8 @@ baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智�
 ## QuickStart
 [下载插件](./downloads) 或 WebStorm 插件中心搜索 `swan`
 
+![](./screenshots/plugin_center.png)
+
 ## Preview
 <img src='./screenshots/create_project.png' style="max-width='600px'"/><br>
 
