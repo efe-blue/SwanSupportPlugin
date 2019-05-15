@@ -7,21 +7,20 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReferenceBase;
-import com.intellij.psi.xml.XmlTag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwanValueReference extends PsiReferenceBase<XmlTag> {
+public class SwanValueReference extends PsiReferenceBase<PsiElement> {
 
     private String varName;
     private PsiElement element;
     private TextRange rangeInValue;
     private int offset;
 
-    public SwanValueReference(XmlTag element, TextRange range, String varName) {
+    public SwanValueReference(PsiElement element, TextRange range, String varName) {
         super(element);
         this.rangeInValue = range;
         this.varName = varName;

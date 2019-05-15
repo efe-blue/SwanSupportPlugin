@@ -46,7 +46,7 @@ public class SwanAttrReferenceProvider extends PsiReferenceProvider {
             }
             if (attr != null && tag instanceof XmlTag) {
                 if (isHtmlAttr(attr)) {
-                    return new PsiReference[0];
+                    return SwanValueReferenceProvider.getTextReference(text, psiElement);
                 }
                 String tagName = ((XmlTag) tag).getName();
                 SwanTag swanTag = SwanTagManager.getInstance().getTag(tagName);

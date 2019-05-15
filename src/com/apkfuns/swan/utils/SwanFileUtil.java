@@ -8,6 +8,7 @@ import com.intellij.json.JsonFileType;
 import com.intellij.lang.javascript.JavaScriptFileType;
 import com.intellij.lang.javascript.psi.*;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
@@ -55,6 +56,20 @@ public class SwanFileUtil {
     }
 
     /**
+     * 是否是 智能小程序项目
+     * @param project Project
+     * @return bool 默认true
+     */
+    public static boolean isSwanProject(@Nullable Project project) {
+        if (project != null) {
+            File projectJson = new File(project.getBasePath(), "project.swan.json");
+            File appJson = new File(project.getBasePath(), "app.json");
+            return projectJson.exists() && appJson.exists();
+        }
+        return true;
+    }
+
+    /**
      * 获取属性的值类型
      *
      * @param value 属性结点
@@ -71,7 +86,7 @@ public class SwanFileUtil {
                     SwanAttribute attribute = tag.getAttribute(attrName);
                     if (attribute != null) {
                         return attribute.getValueType();
-                    } else if (attrName.startsWith("bind:") || attrName.startsWith("catch:")){
+                    } else if (attrName.startsWith("bind:") || attrName.startsWith("catch:")) {
                         return ValueType.FUNCTION;
                     }
                 }
@@ -269,6 +284,12 @@ public class SwanFileUtil {
         }
     }
 
+    /**
+     * 获取字符串内包含的{{}}
+     * @param src 字符串
+     * @return Map<content, TextRange>
+     */
+    @NotNull
     public static Map<String, TextRange> getVars(String src) {
         Map<String, TextRange> results = new IdentityHashMap<>();
         Pattern p = Pattern.compile("\\{\\{.+?}}");

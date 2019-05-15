@@ -1,6 +1,6 @@
 # SwanDevPlugin
 
-[![](https://img.shields.io/badge/JetbrainsPlugin-1.0.5-blue.svg)](https://plugins.jetbrains.com/plugin/12409-swan-support)
+[![](https://img.shields.io/badge/JetbrainsPlugin-1.0.6-blue.svg)](https://plugins.jetbrains.com/plugin/12409-swan-support)
 
 baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智能提醒插件
 
@@ -59,7 +59,7 @@ baidu smart app dev plugin for WebStorm IDE 百度智能小程序 WebStorm 智�
 ## Todo
 * 支持变量层级调用的引用跳转，如`{{a.b.c}}`
 * 支持`s-for`的引用提醒和跳转
-* 屏蔽 style中包含变量的错误提醒
+* ~~屏蔽 style中包含变量的错误提醒~~
 * 屏蔽 `s-else`, `checked` 等空属性的警告
 * 支持 `app.json`等配置文件自动提醒
 * 更多功能扩展欢迎提 issue 和 pr

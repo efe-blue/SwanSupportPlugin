@@ -521,7 +521,7 @@
             <option name="JS_STATEMENT" value="true"/>
         </context>
     </template>
-    <template description="获取当前的地理位置、速度。当用户离开智能小程序后，此接口无法调用。" name="getLocation" toReformat="false" toShortenFQNames="true" value="swan.getLocation({&#10;    success: res =&gt; {&#10;    },&#10;    success: null,&#10;    fail: res =&gt; {&#10;    },&#10;});">
+    <template description="获取当前的地理位置、速度。当用户离开智能小程序后，此接口无法调用。" name="getLocation" toReformat="false" toShortenFQNames="true" value="swan.getLocation({&#10;    success: res =&gt; {&#10;    },&#10;    fail: res =&gt; {&#10;    },&#10;});">
         <context>
             <option name="JAVA_SCRIPT" value="true"/>
             <option name="JS_EXPRESSION" value="true"/>
@@ -1779,38 +1779,6 @@
         </context>
     </template>
     <template description="自定义分析数据上报接口。使用前，需要在小程序管理后台自定义分析中新建事件，配置好事件名与字段。" name="reportAnalytics" toReformat="false" toShortenFQNames="true" value="swan.reportAnalytics();&#10;">
-        <context>
-            <option name="JAVA_SCRIPT" value="true"/>
-            <option name="JS_EXPRESSION" value="true"/>
-            <option name="JSX_HTML" value="true"/>
-            <option name="JS_STATEMENT" value="true"/>
-        </context>
-    </template>
-    <template description="取消由 setInterval 设置的定时器。" name="Interval" toReformat="false" toShortenFQNames="true" value="clearInterval({&#10;});">
-        <context>
-            <option name="JAVA_SCRIPT" value="true"/>
-            <option name="JS_EXPRESSION" value="true"/>
-            <option name="JSX_HTML" value="true"/>
-            <option name="JS_STATEMENT" value="true"/>
-        </context>
-    </template>
-    <template description="取消由 setTimeout 设置的定时器。" name="Timeout" toReformat="false" toShortenFQNames="true" value="clearTimeout({&#10;});">
-        <context>
-            <option name="JAVA_SCRIPT" value="true"/>
-            <option name="JS_EXPRESSION" value="true"/>
-            <option name="JSX_HTML" value="true"/>
-            <option name="JS_STATEMENT" value="true"/>
-        </context>
-    </template>
-    <template description="设定一个定时器。按照指定的周期（以毫秒计）来执行注册的回调函数。" name="terval" toReformat="false" toShortenFQNames="true" value="setInterval({&#10;});">
-        <context>
-            <option name="JAVA_SCRIPT" value="true"/>
-            <option name="JS_EXPRESSION" value="true"/>
-            <option name="JSX_HTML" value="true"/>
-            <option name="JS_STATEMENT" value="true"/>
-        </context>
-    </template>
-    <template description="设定一个定时器，在定时到期以后执行注册的回调函数。" name="meout" toReformat="false" toShortenFQNames="true" value="setTimeout({&#10;});">
         <context>
             <option name="JAVA_SCRIPT" value="true"/>
             <option name="JS_EXPRESSION" value="true"/>

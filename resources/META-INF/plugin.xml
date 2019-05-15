@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.apkfuns.swan.plugin</id>
     <name>swan support</name>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
 
     <description><![CDATA[
@@ -18,8 +18,8 @@
 
     <change-notes><![CDATA[
       <ul>
-      <li><b>1.0.5:</b>
-        <br> swan support plugin release 智能小程序插件发布.
+      <li><b>1.0.6:</b>
+        <br> Fix style, css and other attributes reference jump 修复style、css内包含变量的引用跳转.
       </li>
       </ul>
     ]]>
