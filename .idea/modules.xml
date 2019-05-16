@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IDEPlugin.iml" filepath="$PROJECT_DIR$/IDEPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SwanSupportPlugin.iml" filepath="$PROJECT_DIR$/.idea/SwanSupportPlugin.iml" />
     </modules>
   </component>
 </project>
