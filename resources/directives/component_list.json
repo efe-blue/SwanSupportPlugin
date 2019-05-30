@@ -2296,5 +2296,46 @@
     ],
     "child": [],
     "desc": "swiper-item component"
+  },
+  {
+    "parent": [],
+    "tag": "template",
+    "link": "https://smartprogram.baidu.com/docs/develop/framework/view_template/",
+    "attrs": [
+    ],
+    "child": [],
+    "desc": "swan template"
+  },
+  {
+    "parent": [],
+    "tag": "include",
+    "link": "https://smartprogram.baidu.com/docs/develop/framework/view_quote/",
+    "attrs": [
+      {
+        "defaultValue": "",
+        "valuePattern": "",
+        "valueType": "string",
+        "desc": "template file src",
+        "name": "src"
+      }
+    ],
+    "child": [],
+    "desc": "swan include"
+  },
+  {
+    "tag": "import",
+    "desc": "swan import",
+    "link": "https://smartprogram.baidu.com/docs/develop/framework/view_quote/",
+    "attrs": [
+      {
+        "defaultValue": "",
+        "valuePattern": "",
+        "valueType": "string",
+        "desc": "template file src",
+        "name": "src"
+      }
+    ],
+    "parent": [],
+    "child": []
   }
 ]

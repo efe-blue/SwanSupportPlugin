@@ -13440,4 +13440,30 @@ declare namespace swan {
          */
         setTransform(): void
     }
+
+    interface BaseOptions<R = any, E = any> {
+        /** 接口调用成功的回调函数 */
+        success?(res: R): void;
+        /** 接口调用失败的回调函数 */
+        fail?(res: E): void;
+        /** 接口调用结束的回调函数（调用成功、失败都会执行） */
+        complete?(res: any): void;
+    }
+
+    /**
+     * showFavoriteGuide 参数
+     */
+    interface ShowFavoriteGuideOptions extends BaseOptions {
+        // 引导组件类型，有效值： bar/bar-autohide/tip
+        type?: "bar" | "bar-autohide" | "tip";
+        // 引导组件文字， bar和bar-autohide类型限制少于11个字符，tip类型少于18个字符，超过长度将截断显示
+        content?: "一键添加到我的小程序";
+    }
+
+    /**
+     * 支持在小程序内调起添加到我的小程序引导组件，引导用户添加到我的小程序。
+     * https://smartprogram.baidu.com/docs/develop/api/nacomponent/#swan-showFavoriteGuide/
+     * @param options
+     */
+    function showFavoriteGuide(options: ShowFavoriteGuideOptions): void;
 }

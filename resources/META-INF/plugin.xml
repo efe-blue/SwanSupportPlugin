@@ -2,7 +2,7 @@
     <id>com.apkfuns.swan.plugin</id>
     <name>swan support</name>
     <version>1.0.6</version>
-    <vendor email="pengwei1024@gmail.com" url="https://github.com/pengwei1024/SwanDevPlugin">pengwei1024</vendor>
+    <vendor email="pengwei1024@gmail.com" url="https://github.com/efe-blue/SwanSupportPlugin">SwanSupportPlugin</vendor>
 
     <description><![CDATA[
       Swan Language support for WebStorm. 百度智能小程序支持插件<br><br>
